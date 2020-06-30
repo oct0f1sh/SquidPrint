@@ -8,26 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    // @ObservedObject var store: PrinterStore
+    
     var body: some View {
         NavigationView {
             Sidebar()
-            Dashboard()
+            LandingPage(title: "Welcome")
         }
     }
 }
 
-struct Dashboard: View {
+struct LandingPage: View {
+    var title: String
+    
     var body: some View {
         VStack {
-            Text("Dashboard").font(.largeTitle).fontWeight(.bold)
-            Spacer()
-            HStack {
-                Spacer()
-                Controls()
-                Spacer()
-            }
-            Spacer()
-            Spacer()
+            Text("🦑").font(.largeTitle)
+            Text(title).font(.title2).fontWeight(.bold)
         }
     }
 }
@@ -36,7 +33,7 @@ struct Control: View {
     var title: String
     
     var body: some View {
-        NavigationLink(destination: Text("Good job")) {
+        NavigationLink(destination: LandingPage(title: title)) {
             Label {
                 Text(title)
             } icon: {
@@ -48,19 +45,23 @@ struct Control: View {
 
 struct Controls: View {
     var body: some View {
-        List (1..<5 ) { i in
+        List ( 1..<5 ) { i in
             Control(title: "Control \(i)")
         }
     }
 }
 
 struct Sidebar: View {
+    let pages: [String] = ["Connection", "Files", "Settings"]
+    
     var body: some View {
-        List( 1..<100 ) { i in
-            HStack {
-                Image(systemName: "flame.fill")
+        List(pages, id: \.self) { page in
+            NavigationLink(destination: LandingPage(title: page)) {
+                HStack {
+                    Image(systemName: "flame.fill")
+                    Text(page)
+                }
             }
-            Text("Row \(i)")
         }
         .navigationTitle("SquidPrint")
         .listStyle(SidebarListStyle())
@@ -70,5 +71,7 @@ struct Sidebar: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
+            .previewDevice("iPad (7th generation)")
     }
 }

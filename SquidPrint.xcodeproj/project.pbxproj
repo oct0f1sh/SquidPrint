@@ -13,6 +13,14 @@
 		AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* ContentView.swift */; };
 		AECE5CC924A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
 		AECE5CCA24A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
+		AEE4BE7A24AABBB40030BE06 /* OctoPrintServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* OctoPrintServer.swift */; };
+		AEE4BE7B24AABBB40030BE06 /* OctoPrintServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* OctoPrintServer.swift */; };
+		AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
+		AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
+		AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
+		AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
+		AEEF22D024A9853A0041BA36 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */; };
+		AEEF22D124A9853A0041BA36 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,10 @@
 		AECE5CC124A6CC730032B366 /* SquidPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquidPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECE5CC324A6CC730032B366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AECE5CC424A6CC730032B366 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		AEE4BE7924AABBB40030BE06 /* OctoPrintServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPrintServer.swift; sourceTree = "<group>"; };
+		AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterProfile.swift; sourceTree = "<group>"; };
+		AEE4BE7F24AAC0190030BE06 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +69,10 @@
 		AECE5CB124A6CC720032B366 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AEE4BE7824AABB090030BE06 /* Model */,
 				AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */,
 				AECE5CB324A6CC720032B366 /* ContentView.swift */,
+				AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */,
 				AECE5CB424A6CC730032B366 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -88,6 +102,16 @@
 				AECE5CC424A6CC730032B366 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		AEE4BE7824AABB090030BE06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AEE4BE7924AABBB40030BE06 /* OctoPrintServer.swift */,
+				AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */,
+				AEE4BE7F24AAC0190030BE06 /* Connection.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE4BE7A24AABBB40030BE06 /* OctoPrintServer.swift in Sources */,
+				AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */,
+				AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */,
+				AEEF22D024A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC524A6CC730032B366 /* SquidPrintApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE4BE7B24AABBB40030BE06 /* OctoPrintServer.swift in Sources */,
+				AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */,
+				AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */,
+				AEEF22D124A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC624A6CC730032B366 /* SquidPrintApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
