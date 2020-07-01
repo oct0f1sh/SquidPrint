@@ -43,7 +43,5 @@ struct Connection: Codable {
         state = try currentConnection.decode(String.self, forKey: .state)
     }
     
-    func encode(to encoder: Encoder) throws {
-        <#code#>
-    }
+    // TODO: func encode(to encoder: Encoder) throws {
 }

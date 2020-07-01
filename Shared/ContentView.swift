@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    // @ObservedObject var store: PrinterStore
+    @ObservedObject var server: OctoPrintServer
     
     var body: some View {
         NavigationView {
-            Sidebar()
-            LandingPage(title: "Welcome")
+            Sidebar(server: server)
+            LandingPage(title: "Welcome", server: server)
         }
     }
 }
 
 struct LandingPage: View {
     var title: String
+    @ObservedObject var server: OctoPrintServer
     
     var body: some View {
         VStack {
@@ -29,34 +30,35 @@ struct LandingPage: View {
     }
 }
 
-struct Control: View {
-    var title: String
-    
-    var body: some View {
-        NavigationLink(destination: LandingPage(title: title)) {
-            Label {
-                Text(title)
-            } icon: {
-                Image(systemName: "wand.and.rays")
-            }.labelStyle(TitleOnlyLabelStyle())
-        }
-    }
-}
-
-struct Controls: View {
-    var body: some View {
-        List ( 1..<5 ) { i in
-            Control(title: "Control \(i)")
-        }
-    }
-}
+//struct Control: View {
+//    var title: String
+//
+//    var body: some View {
+//        NavigationLink(destination: LandingPage(title: title)) {
+//            Label {
+//                Text(title)
+//            } icon: {
+//                Image(systemName: "wand.and.rays")
+//            }.labelStyle(TitleOnlyLabelStyle())
+//        }
+//    }
+//}
+//
+//struct Controls: View {
+//    var body: some View {
+//        List ( 1..<5 ) { i in
+//            Control(title: "Control \(i)")
+//        }
+//    }
+//}
 
 struct Sidebar: View {
     let pages: [String] = ["Connection", "Files", "Settings"]
+    @ObservedObject var server: OctoPrintServer
     
     var body: some View {
         List(pages, id: \.self) { page in
-            NavigationLink(destination: LandingPage(title: page)) {
+            NavigationLink(destination: LandingPage(title: page, server: server)) {
                 HStack {
                     Image(systemName: "flame.fill")
                     Text(page)
@@ -68,10 +70,10 @@ struct Sidebar: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .preferredColorScheme(.dark)
-            .previewDevice("iPad (7th generation)")
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .preferredColorScheme(.dark)
+//            .previewDevice("iPad (7th generation)")
+//    }
+//}

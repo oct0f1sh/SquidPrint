@@ -9,13 +9,16 @@ import SwiftUI
 
 @main
 struct SquidPrintApp: App {
-    // @StateObject private var store = PrinterStore()
+     @StateObject private var connection = OctoPrintServer(
+        using: NetworkManager(
+            with: OctoPrintServerConfig(
+                serverURL: URL(string: "10.0.0.90")!, apiKey: "DCCC957B0AEB469E8C4980319777D68D")))
     
     // App contains the Scene, and the Scene contains the Views
     var body: some Scene {
         WindowGroup {
             // Change this to pass in PrinterStore
-            ContentView()
+            ContentView(server: connection)
         }
     }
 }
