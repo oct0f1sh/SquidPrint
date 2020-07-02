@@ -45,3 +45,4 @@ struct Connection: Codable {
     
     // TODO: func encode(to encoder: Encoder) throws {
 }
+

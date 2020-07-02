@@ -14,9 +14,11 @@ fileprivate class MockNetworkSession: NetworkSession {
     
     func loadData(from url: URL, _ response: @escaping (Data?, URLResponse?, Error?) -> Void) {
         // url.path gives us the path of the URL without the URL host. Ex: "dunc.info/api/connection" -> "/api/connection"
-        let path = url.path
+        var path = url.path
+        // We need to remove the leading `/` in order to be able to initialize Endpoint with a RawValue
+        path.removeFirst()
         
-        guard let endpoint = Endpoint(rawValue: String(path.dropFirst())) else {
+        guard let endpoint = Endpoint(rawValue: path) else {
             response(nil, nil, nil)
             return
         }
@@ -25,8 +27,8 @@ fileprivate class MockNetworkSession: NetworkSession {
 }
 
 class NetworkManagerTests: XCTestCase {
-    var config: OctoPrintServerConfig!
     fileprivate var session: MockNetworkSession!
+    var config: OctoPrintServerConfig!
     var networkManager: NetworkManager!
     let serverURL: URL = URL(staticString: "http://dunc.info")
     
