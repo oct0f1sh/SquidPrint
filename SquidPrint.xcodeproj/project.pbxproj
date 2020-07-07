@@ -116,6 +116,7 @@
 		AE505FE824B41AD500FBB821 /* Printer */ = {
 			isa = PBXGroup;
 			children = (
+				AE206E4124B41E1600F06AA6 /* Printer.swift */,
 				AE505FE924B41B2200FBB821 /* Connection */,
 				AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */,
 				AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */,
@@ -255,7 +256,6 @@
 		AEE4BE7824AABB090030BE06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE206E4124B41E1600F06AA6 /* Printer.swift */,
 				AE505FE824B41AD500FBB821 /* Printer */,
 				AEC20E1424AD2C3500BAC4CD /* Network */,
 			);

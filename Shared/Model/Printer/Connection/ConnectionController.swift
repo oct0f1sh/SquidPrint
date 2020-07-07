@@ -13,7 +13,7 @@ protocol ConnectionController: ObservableObject {
 }
 
 class RemoteConnectionController: ConnectionController {
-    let networkManager: NetworkManager
+    private let networkManager: NetworkManager
     
     @Published var connection: Connection?
     
