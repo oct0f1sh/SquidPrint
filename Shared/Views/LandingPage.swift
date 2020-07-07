@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LandingPage: View {
-    @ObservedObject var server: PrinterManager
     var title: String
     
     var body: some View {
@@ -21,6 +20,6 @@ struct LandingPage: View {
 
 struct LandingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        LandingPage(server: PrinterManager(using: .previewData), title: "Preview")
+        LandingPage(title: "Preview")
     }
 }

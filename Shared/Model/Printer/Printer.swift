@@ -14,7 +14,7 @@ struct Printer {
     }
     
     init(using networkManager: NetworkManager) {
-        self.connectionController = RemoteConnectionController(using: networkManager)
+        self.connectionController = ConnectionController(for: RemoteConnectionDataSource(using: networkManager))
     }
     
     func update() {
