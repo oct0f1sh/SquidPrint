@@ -14,9 +14,9 @@ enum Endpoint: String {
 
 class NetworkManager {
     var session: NetworkSession
-    var serverConfig: OctoPrintServerConfig
+    var serverConfig: OctoPrintAPIConfig
     
-    init(with config: OctoPrintServerConfig, using session: NetworkSession = URLSession.shared) {
+    init(with config: OctoPrintAPIConfig, using session: NetworkSession = URLSession.shared) {
         self.session = session
         self.serverConfig = config
     }
@@ -32,4 +32,10 @@ class NetworkManager {
     func loadData(from endpoint: Endpoint, _ completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         session.loadData(from: url(for: endpoint), completion)
     }
+}
+
+internal extension NetworkManager {
+    static var previewData: NetworkManager = {
+        NetworkManager(with: OctoPrintAPIConfig(serverURL: "example.com", apiKey: "XXXXXX"))
+    }()
 }

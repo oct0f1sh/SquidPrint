@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var server: OctoPrintServer
+    @ObservedObject var server: PrinterManager
     
     var body: some View {
         NavigationView {
             Sidebar(server: server)
-            LandingPage(title: "Welcome", server: server)
+            LandingPage(server: server, title: "Welcome")
         }
     }
 }
 
 struct LandingPage: View {
+    @ObservedObject var server: PrinterManager
     var title: String
-    @ObservedObject var server: OctoPrintServer
     
     var body: some View {
         VStack {
@@ -53,12 +53,12 @@ struct LandingPage: View {
 //}
 
 struct Sidebar: View {
+    @ObservedObject var server: PrinterManager
     let pages: [String] = ["Connection", "Files", "Settings"]
-    @ObservedObject var server: OctoPrintServer
     
     var body: some View {
         List(pages, id: \.self) { page in
-            NavigationLink(destination: LandingPage(title: page, server: server)) {
+            NavigationLink(destination: LandingPage(server: server, title: page)) {
                 HStack {
                     Image(systemName: "flame.fill")
                     Text(page)
@@ -70,10 +70,12 @@ struct Sidebar: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//            .preferredColorScheme(.dark)
-//            .previewDevice("iPad (7th generation)")
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let server = PrinterManager(using: .previewData)
+        
+        return ContentView(server: server)
+            .preferredColorScheme(.dark)
+            .previewDevice("iPad (7th generation)")
+    }
+}
