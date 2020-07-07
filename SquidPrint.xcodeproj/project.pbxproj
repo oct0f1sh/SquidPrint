@@ -105,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE505FE824B41AD500FBB821 /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */,
+				AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */,
+			);
+			path = Printer;
+			sourceTree = "<group>";
+		};
 		AEC20E0224AD274C00BAC4CD /* SquidPrintTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,9 +238,8 @@
 		AEE4BE7824AABB090030BE06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE505FE824B41AD500FBB821 /* Printer */,
 				AEC20E1424AD2C3500BAC4CD /* Network */,
-				AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */,
-				AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
