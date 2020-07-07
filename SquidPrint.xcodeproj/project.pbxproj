@@ -10,6 +10,9 @@
 		AE206E3E24B41BC300F06AA6 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E3D24B41BC300F06AA6 /* ConnectionController.swift */; };
 		AE206E3F24B41BC300F06AA6 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E3D24B41BC300F06AA6 /* ConnectionController.swift */; };
 		AE206E4024B41BC300F06AA6 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E3D24B41BC300F06AA6 /* ConnectionController.swift */; };
+		AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
+		AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
+		AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
 		AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */; };
 		AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
 		AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
@@ -61,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		AE206E3D24B41BC300F06AA6 /* ConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
+		AE206E4124B41E1600F06AA6 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		AEC20E0124AD274C00BAC4CD /* SquidPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquidPrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		AEC20E0524AD274C00BAC4CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		AEE4BE7824AABB090030BE06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE206E4124B41E1600F06AA6 /* Printer.swift */,
 				AE505FE824B41AD500FBB821 /* Printer */,
 				AEC20E1424AD2C3500BAC4CD /* Network */,
 			);
@@ -390,6 +395,7 @@
 				AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1C24AD2D5700BAC4CD /* ConnectionView.swift in Sources */,
 				AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */,
+				AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E1924AD2D4300BAC4CD /* Connection.swift in Sources */,
 				AEC20E1D24AD2D5700BAC4CD /* ContentView.swift in Sources */,
 				AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */,
@@ -410,6 +416,7 @@
 				AEC20E2824AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1624AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
 				AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */,
+				AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */,
@@ -429,6 +436,7 @@
 				AEC20E2924AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1724AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
 				AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */,
+				AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */,
