@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol NetworkSession {
+    func getPublisher(from url: URL) -> URLSession.DataTaskPublisher
+    func loadData(from url: URL, _ response: @escaping (Data?, URLResponse?, Error?) -> Void)
+}
+
 enum Endpoint: String {
     case connection = "api/connection"
     case files = "api/files"

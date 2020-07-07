@@ -32,15 +32,15 @@ class PrinterManager: ObservableObject {
     }
     
     func update(_ completion: ((Result<Any?, Error>) -> Void)? = nil) {
-        networkManager.loadData(from: .connection) { data, _, error in
+        networkManager.loadData(from: .connection) { [weak self] data, _, error in
             if let error = error {
                 completion?(.failure(error))
                 return
             }
             
             if let data = data, let connection = try? JSONDecoder().decode(Connection.self, from: data) {
-                self.connection = connection
-                completion?(.success(self.connection))
+                self?.connection = connection
+                completion?(.success(self?.connection))
             }
         }
     }

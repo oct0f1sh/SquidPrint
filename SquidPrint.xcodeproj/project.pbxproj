@@ -27,6 +27,9 @@
 		AEC20E2924AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
 		AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
 		AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2B24AD496400BAC4CD /* Helpers.swift */; };
+		AEC20E3024B3FE4B00BAC4CD /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */; };
+		AEC20E3124B3FE4B00BAC4CD /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */; };
+		AEC20E3224B3FE4B00BAC4CD /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */; };
 		AECE5CC524A6CC730032B366 /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
 		AECE5CC624A6CC730032B366 /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
 		AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* ContentView.swift */; };
@@ -62,6 +65,7 @@
 		AEC20E1524AD2C4500BAC4CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkSession.swift"; sourceTree = "<group>"; };
 		AEC20E2B24AD496400BAC4CD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquidPrintApp.swift; sourceTree = "<group>"; };
 		AECE5CB324A6CC720032B366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AECE5CB424A6CC730032B366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +157,26 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		AEC20E2D24B3FD9700BAC4CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AECE5CB324A6CC720032B366 /* ContentView.swift */,
+				AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */,
+				AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AEC20E2E24B3FDAD00BAC4CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */,
+				AEC20E1024AD294600BAC4CD /* Constants.swift */,
+				AECE5CB424A6CC730032B366 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AECE5CAC24A6CC710032B366 = {
 			isa = PBXGroup;
 			children = (
@@ -167,13 +191,10 @@
 		AECE5CB124A6CC720032B366 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AEC20E2E24B3FDAD00BAC4CD /* Supporting Files */,
+				AEC20E2D24B3FD9700BAC4CD /* Views */,
 				AEC20E0B24AD28BE00BAC4CD /* Extensions */,
 				AEE4BE7824AABB090030BE06 /* Model */,
-				AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */,
-				AECE5CB324A6CC720032B366 /* ContentView.swift */,
-				AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */,
-				AECE5CB424A6CC730032B366 /* Assets.xcassets */,
-				AEC20E1024AD294600BAC4CD /* Constants.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -343,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEC20E0F24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
+				AEC20E3224B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEC20E1B24AD2D5700BAC4CD /* SquidPrintApp.swift in Sources */,
 				AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1C24AD2D5700BAC4CD /* ConnectionView.swift in Sources */,
@@ -368,6 +390,7 @@
 				AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */,
+				AEC20E3024B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D024A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC524A6CC730032B366 /* SquidPrintApp.swift in Sources */,
 				AEC20E1124AD294600BAC4CD /* Constants.swift in Sources */,
@@ -385,6 +408,7 @@
 				AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
 				AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */,
+				AEC20E3124B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D124A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC624A6CC730032B366 /* SquidPrintApp.swift in Sources */,
 				AEC20E1224AD294600BAC4CD /* Constants.swift in Sources */,

@@ -18,18 +18,6 @@ struct ContentView: View {
     }
 }
 
-struct LandingPage: View {
-    @ObservedObject var server: PrinterManager
-    var title: String
-    
-    var body: some View {
-        VStack {
-            Text("🦑").font(.largeTitle)
-            Text(title).font(.title2).fontWeight(.bold)
-        }
-    }
-}
-
 //struct Control: View {
 //    var title: String
 //
