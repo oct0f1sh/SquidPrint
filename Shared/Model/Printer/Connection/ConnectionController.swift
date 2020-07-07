@@ -7,20 +7,18 @@
 
 import Foundation
 
-protocol ConnectionController: ObservableObject {
+protocol ConnectionController: AnyObject {
     var connection: Connection? { get }
     func update()
 }
 
-class RemoteConnectionController: ConnectionController {
+class RemoteConnectionController: ConnectionController, ObservableObject {
     private let networkManager: NetworkManager
     
     @Published var connection: Connection?
     
-    // TODO: better parameter labeling?
-    init(networkManager: NetworkManager, _ connection: Connection? = nil) {
+    init(using networkManager: NetworkManager) {
         self.networkManager = networkManager
-        self.connection = connection
     }
     
     func update() {
@@ -32,3 +30,5 @@ class RemoteConnectionController: ConnectionController {
         }
     }
 }
+
+// TODO: LocalConnectionController
