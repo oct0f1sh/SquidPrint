@@ -13,6 +13,9 @@
 		AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
 		AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
 		AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE206E4124B41E1600F06AA6 /* Printer.swift */; };
+		AE6A06E124B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
+		AE6A06E224B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
+		AE6A06E324B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
 		AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */; };
 		AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
 		AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
@@ -65,6 +68,7 @@
 /* Begin PBXFileReference section */
 		AE206E3D24B41BC300F06AA6 /* ConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
 		AE206E4124B41E1600F06AA6 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		AE6A06E024B57358004E124B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		AEC20E0124AD274C00BAC4CD /* SquidPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquidPrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		AEC20E0524AD274C00BAC4CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				AECE5CB324A6CC720032B366 /* PrinterView.swift */,
 				AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */,
 				AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */,
+				AE6A06E024B57358004E124B /* RootView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */,
 				AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E1924AD2D4300BAC4CD /* Connection.swift in Sources */,
+				AE6A06E324B57358004E124B /* RootView.swift in Sources */,
 				AEC20E1D24AD2D5700BAC4CD /* PrinterView.swift in Sources */,
 				AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */,
 				AEC20E1E24AD2D5700BAC4CD /* PrinterProfile.swift in Sources */,
@@ -415,6 +421,7 @@
 				AE206E3E24B41BC300F06AA6 /* ConnectionController.swift in Sources */,
 				AEC20E2824AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1624AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
+				AE6A06E124B57358004E124B /* RootView.swift in Sources */,
 				AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */,
 				AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
@@ -435,6 +442,7 @@
 				AE206E3F24B41BC300F06AA6 /* ConnectionController.swift in Sources */,
 				AEC20E2924AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1724AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
+				AE6A06E224B57358004E124B /* RootView.swift in Sources */,
 				AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */,
 				AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,

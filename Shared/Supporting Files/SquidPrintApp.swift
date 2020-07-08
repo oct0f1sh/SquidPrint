@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct SquidPrintApp: App {
+//    @StateObject let printerStore
     let apiConfig = OctoPrintAPIConfig(serverURL: "example.com", apiKey: "A KEY")
     
     var body: some Scene {
         WindowGroup {
-            PrinterView(printer: Printer(using: NetworkManager(with: apiConfig)))
+            PrinterView(printer: Printer("printer", using: NetworkManager(with: apiConfig)))
         }
     }
 }

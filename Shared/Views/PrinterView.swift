@@ -46,7 +46,7 @@ struct Sidebar: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let printer = Printer(with: ConnectionController(using: FakeConnectionDataSource()))
+        let printer = Printer("printer", with: ConnectionController(using: FakeConnectionDataSource()))
         
         return PrinterView(printer: printer)
             .preferredColorScheme(.dark)

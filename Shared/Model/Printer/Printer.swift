@@ -7,17 +7,24 @@
 
 import Foundation
 
-struct Printer {
+struct Printer: Identifiable {
+    var name: String
     var connectionController: ConnectionController
     var connection: Connection? {
         get { connectionController.connection }
     }
     
-    init(using networkManager: NetworkManager) {
+    var id: String {
+        get { name }
+    }
+    
+    init(_ name: String, using networkManager: NetworkManager) {
+        self.name = name
         self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkManager))
     }
     
-    init(with connectionController: ConnectionController) {
+    init(_ name: String, with connectionController: ConnectionController) {
+        self.name = name
         self.connectionController = connectionController
     }
     
