@@ -13,7 +13,7 @@ struct SquidPrintApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(printer: Printer(using: NetworkManager(with: apiConfig)))
+            PrinterView(printer: Printer(using: NetworkManager(with: apiConfig)))
         }
     }
 }

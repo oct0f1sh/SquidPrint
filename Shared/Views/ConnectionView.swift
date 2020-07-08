@@ -36,8 +36,8 @@ struct ConnectionView: View {
     }
 }
 
-//struct ConnectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ConnectionView(connectionController: ConnectionController(for: ))
-//    }
-//}
+struct ConnectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConnectionView(connectionController: ConnectionController(using: FakeConnectionDataSource()))
+    }
+}

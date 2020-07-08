@@ -8,13 +8,17 @@
 import Foundation
 
 struct Printer {
-    private var connectionController: ConnectionController
+    var connectionController: ConnectionController
     var connection: Connection? {
         get { connectionController.connection }
     }
     
     init(using networkManager: NetworkManager) {
-        self.connectionController = ConnectionController(for: RemoteConnectionDataSource(using: networkManager))
+        self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkManager))
+    }
+    
+    init(with connectionController: ConnectionController) {
+        self.connectionController = connectionController
     }
     
     func update() {

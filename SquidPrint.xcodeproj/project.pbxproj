@@ -27,7 +27,7 @@
 		AEC20E1A24AD2D4800BAC4CD /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */; };
 		AEC20E1B24AD2D5700BAC4CD /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
 		AEC20E1C24AD2D5700BAC4CD /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */; };
-		AEC20E1D24AD2D5700BAC4CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* ContentView.swift */; };
+		AEC20E1D24AD2D5700BAC4CD /* PrinterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* PrinterView.swift */; };
 		AEC20E1E24AD2D5700BAC4CD /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
 		AEC20E2824AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
 		AEC20E2924AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
@@ -38,8 +38,8 @@
 		AEC20E3224B3FE4B00BAC4CD /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */; };
 		AECE5CC524A6CC730032B366 /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
 		AECE5CC624A6CC730032B366 /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
-		AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* ContentView.swift */; };
-		AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* ContentView.swift */; };
+		AECE5CC724A6CC730032B366 /* PrinterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* PrinterView.swift */; };
+		AECE5CC824A6CC730032B366 /* PrinterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* PrinterView.swift */; };
 		AECE5CC924A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
 		AECE5CCA24A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
 		AEE4BE7A24AABBB40030BE06 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */; };
@@ -75,7 +75,7 @@
 		AEC20E2B24AD496400BAC4CD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquidPrintApp.swift; sourceTree = "<group>"; };
-		AECE5CB324A6CC720032B366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AECE5CB324A6CC720032B366 /* PrinterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterView.swift; sourceTree = "<group>"; };
 		AECE5CB424A6CC730032B366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AECE5CB924A6CC730032B366 /* SquidPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquidPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECE5CBC24A6CC730032B366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		AEC20E2D24B3FD9700BAC4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AECE5CB324A6CC720032B366 /* ContentView.swift */,
+				AECE5CB324A6CC720032B366 /* PrinterView.swift */,
 				AEEF22CF24A9853A0041BA36 /* ConnectionView.swift */,
 				AEC20E2F24B3FE4B00BAC4CD /* LandingPage.swift */,
 			);
@@ -397,7 +397,7 @@
 				AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */,
 				AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E1924AD2D4300BAC4CD /* Connection.swift in Sources */,
-				AEC20E1D24AD2D5700BAC4CD /* ContentView.swift in Sources */,
+				AEC20E1D24AD2D5700BAC4CD /* PrinterView.swift in Sources */,
 				AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */,
 				AEC20E1E24AD2D5700BAC4CD /* PrinterProfile.swift in Sources */,
 				AEC20E1824AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
@@ -419,7 +419,7 @@
 				AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
-				AECE5CC724A6CC730032B366 /* ContentView.swift in Sources */,
+				AECE5CC724A6CC730032B366 /* PrinterView.swift in Sources */,
 				AEC20E3024B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D024A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC524A6CC730032B366 /* SquidPrintApp.swift in Sources */,
@@ -439,7 +439,7 @@
 				AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
-				AECE5CC824A6CC730032B366 /* ContentView.swift in Sources */,
+				AECE5CC824A6CC730032B366 /* PrinterView.swift in Sources */,
 				AEC20E3124B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D124A9853A0041BA36 /* ConnectionView.swift in Sources */,
 				AECE5CC624A6CC730032B366 /* SquidPrintApp.swift in Sources */,
