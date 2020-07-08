@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ConnectionView: View {
     @ObservedObject var connectionController: ConnectionController
-    var connection: Connection? {
-        connectionController.connection
+    
+    private var connection: Connection? {
+        get { connectionController.connection }
     }
     
     var body: some View {
@@ -24,6 +25,7 @@ struct ConnectionView: View {
                 }
                 HStack {
                     Spacer()
+                    Text("placeholder")
 //                    Button(connected ? "Disconnect" : "Connect") {
 //                        print("doing the thing")
 //                    }
@@ -34,8 +36,8 @@ struct ConnectionView: View {
     }
 }
 
-struct ConnectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectionView(connectionController: ConnectionController(for: <#T##ConnectionDataSource#>))
-    }
-}
+//struct ConnectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConnectionView(connectionController: ConnectionController(for: ))
+//    }
+//}

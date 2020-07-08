@@ -16,7 +16,7 @@ class ConnectionController: ObservableObject {
     
     @Published var connection: Connection?
     
-    init(for dataSource: ConnectionDataSource) {
+    init(using dataSource: ConnectionDataSource) {
         self.dataSource = dataSource
     }
     
@@ -48,6 +48,22 @@ class RemoteConnectionDataSource: ConnectionDataSource {
                 completion(nil)
             }
         }
+    }
+}
+
+class FakeConnectionDataSource: ConnectionDataSource {
+    lazy var connection: Connection = {
+        Connection(options: Connection.Options(baudrates: [100, 200],
+                                  ports: ["fake_port/1", "fake_port/2"],
+                                  printerProfiles: [PrinterProfile(id: "some id", name: "3D Printer")]),
+                   baudrate: 100,
+                   port: "fake_port/1",
+                   printerProfileID: "some id",
+                   state: "doing something")
+    }()
+    
+    func update(_ completion: @escaping (Connection?) -> Void) {
+        completion(connection)
     }
 }
 

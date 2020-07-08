@@ -32,6 +32,14 @@ struct Connection: Codable {
     let printerProfileID: String
     let state: String // TODO: Could be enum
     
+    init(options: Connection.Options, baudrate: Int, port: String, printerProfileID: String, state: String) {
+        self.options = options
+        self.baudrate = baudrate
+        self.port = port
+        self.printerProfileID = printerProfileID
+        self.state = state
+    }
+    
     init(from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         let currentConnection = try rootContainer.nestedContainer(keyedBy: CurrentConnectionCodingKeys.self, forKey: .current)
