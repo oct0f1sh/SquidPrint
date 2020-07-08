@@ -54,8 +54,8 @@ class RemoteConnectionDataSource: ConnectionDataSource {
 class FakeConnectionDataSource: ConnectionDataSource {
     lazy var connection: Connection = {
         Connection(options: Connection.Options(baudrates: [100, 200],
-                                  ports: ["fake_port/1", "fake_port/2"],
-                                  printerProfiles: [PrinterProfile(id: "some id", name: "3D Printer")]),
+                                               ports: ["fake_port/1", "fake_port/2"],
+                                               printerProfiles: [PrinterProfile(id: "some id", name: "3D Printer")]),
                    baudrate: 100,
                    port: "fake_port/1",
                    printerProfileID: "some id",
