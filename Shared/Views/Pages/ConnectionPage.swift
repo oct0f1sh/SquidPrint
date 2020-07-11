@@ -1,5 +1,5 @@
 //
-//  ConnectionView.swift
+//  ConnectionPage.swift
 //  SquidPrint
 //
 //  Created by Duncan MacDonald on 6/28/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConnectionView: View {
+struct ConnectionPage: View {
     @ObservedObject var connectionController: ConnectionController
     
     private var connection: Connection? {
@@ -28,8 +28,11 @@ struct ConnectionView: View {
     }
 }
 
-struct ConnectionView_Previews: PreviewProvider {
+struct ConnectionPage_Previews: PreviewProvider {
+    @StateObject static var printerStore = PrinterStore(mockData: true)
+    
     static var previews: some View {
-        ConnectionView(connectionController: ConnectionController(using: FakeConnectionDataSource()))
+        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first!, selectedPage: .connection)
+            .layoutLandscapeiPad()
     }
 }

@@ -9,17 +9,24 @@ import SwiftUI
 
 @main
 struct SquidPrintApp: App {
-//    @StateObject let printerStore
-    // @SceneStorage currentPrinterID
-    // Persist list of printerIDs
-    let apiConfig = OctoPrintAPIConfig(serverURL: "example.com", apiKey: "A KEY")
+    @StateObject var printerStore = PrinterStore()
     
     var body: some Scene {
         WindowGroup {
-            RootView(printers: [
-//                Printer("Prusa i3 Mk3", with: ConnectionController(using: FakeConnectionDataSource())),
-//                Printer("Ender 3", with: ConnectionController(using: FakeConnectionDataSource())),
-            ])
+            RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, selectedPage: .landing)
+        }
+    }
+}
+
+class PrinterStore: ObservableObject {
+    @Published var printers: [Printer] = []
+    
+    init(mockData: Bool = false) {
+        if mockData {
+            printers = [
+                Printer("Prusa i3 Mk3", with: ConnectionController(using: FakeConnectionDataSource())),
+                Printer("Ender 3", with: ConnectionController(using: FakeConnectionDataSource()))
+            ]
         }
     }
 }

@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var printers: [Printer]
+    @Binding var printers: [Printer]
     @State var currentPrinter: Printer?
+    @State var selectedPage: Page
     
     var body: some View {
         NavigationView {
-            RootSidebar(printers: printers, currentPrinter: $currentPrinter)
-            if let printer: Binding<Printer> = $currentPrinter {
-                PrinterSidebar(printer: printer)
-            } else {
-                /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
-            }
-            LandingPage(title: "Welcome")
+            RootSidebar(printers: $printers, currentPrinter: $currentPrinter)
+            PrinterSidebar(printer: currentPrinter, selectedPage: $selectedPage)
+            PageHost(page: selectedPage, printer: currentPrinter)
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
 struct RootSidebar: View {
-    @State var printers: [Printer]
+    @Binding var printers: [Printer]
     @Binding var currentPrinter: Printer?
     
     var body: some View {
@@ -56,13 +53,10 @@ struct RootSidebar: View {
 }
 
 struct RootView_Previews: PreviewProvider {
+    @StateObject static var printerStore = PrinterStore(mockData: true)
+    
     static var previews: some View {
-        Group {
-            RootView(printers: [Printer("a printer", with: ConnectionController(using: FakeConnectionDataSource()))])
-                .previewDevice("iPhone 11")
-            RootView(printers: [Printer("a printer", with: ConnectionController(using: FakeConnectionDataSource()))])
-                .previewLayout(.fixed(width: 1024.0, height: 768.0))
-                .previewDevice("iPad (7th generation)")
-        }
+        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, selectedPage: .landing)
+            .layoutLandscapeiPad()
     }
 }
