@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Printer: Identifiable {
+class Printer: Identifiable, ObservableObject {
     var name: String
-    var connectionController: ConnectionController
+    
+    @Published var connectionController: ConnectionController
     var connection: Connection? {
         get { connectionController.connection }
     }

@@ -7,19 +7,8 @@
 
 import SwiftUI
 
-struct PrinterView: View {
-    var printer: Printer
-    
-    var body: some View {
-        NavigationView {
-            Sidebar(printer: printer)
-            ConnectionView(connectionController: printer.connectionController)
-        }
-    }
-}
-
-struct Sidebar: View {
-    var printer: Printer
+struct PrinterSidebar: View {
+    @Binding var printer: Printer?
     let pages: [String] = ["Home", "Connection"]
     
     var body: some View {
@@ -31,24 +20,27 @@ struct Sidebar: View {
                     label: { Label(page, systemImage: "house") }
                 )
             case "Connection":
-                NavigationLink(
-                    destination: ConnectionView(connectionController: printer.connectionController),
-                    label: { Label(page, systemImage: "wifi") }
-                )
+                if let printer = printer {
+                    NavigationLink(
+                        destination: ConnectionView(connectionController: printer.connectionController),
+                        label: { Label(page, systemImage: "wifi") }
+                    ).disabled(true)
+                } else {
+                    Button(action: { print("nice") }, label: { Label(page, systemImage: "wifi") })
+                }
             default:
                 Text("Something weird happened")
             }
         }
-        .navigationTitle("SquidPrint")
+        .navigationTitle(printer?.name ?? "Printer")
         .listStyle(SidebarListStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var printer: Printer? = Printer("printer", with: ConnectionController(using: FakeConnectionDataSource()))
+    
     static var previews: some View {
-        let printer = Printer("printer", with: ConnectionController(using: FakeConnectionDataSource()))
-        
-        return PrinterView(printer: printer)
-            .preferredColorScheme(.dark)
+        return PrinterSidebar(printer: $printer)
     }
 }

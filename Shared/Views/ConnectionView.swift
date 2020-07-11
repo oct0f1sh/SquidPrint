@@ -23,14 +23,6 @@ struct ConnectionView: View {
 //                    Image(systemName: connected ? "wifi" : "wifi.slash")
                     Spacer()
                 }
-                HStack {
-                    Spacer()
-                    Text("placeholder")
-//                    Button(connected ? "Disconnect" : "Connect") {
-//                        print("doing the thing")
-//                    }
-                    Spacer()
-                }
             }
         }
     }
