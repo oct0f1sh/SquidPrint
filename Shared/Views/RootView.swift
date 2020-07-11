@@ -14,8 +14,8 @@ struct RootView: View {
     var body: some View {
         NavigationView {
             RootSidebar(printers: printers, currentPrinter: $currentPrinter)
-            if let _ = currentPrinter {
-                PrinterSidebar(printer: $currentPrinter)
+            if let printer: Binding<Printer> = $currentPrinter {
+                PrinterSidebar(printer: printer)
             } else {
                 /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
             }

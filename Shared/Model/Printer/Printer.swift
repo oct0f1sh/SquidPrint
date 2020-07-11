@@ -8,7 +8,8 @@
 import Foundation
 
 class Printer: Identifiable, ObservableObject {
-    var name: String
+    // Published means that a notification will be sent whenever the object is changed
+    @Published var name: String
     
     @Published var connectionController: ConnectionController
     var connection: Connection? {

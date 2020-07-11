@@ -17,9 +17,9 @@ struct SquidPrintApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(printers: [
-                Printer("Prusa i3 Mk3", with: ConnectionController(using: FakeConnectionDataSource())),
-                Printer("Ender 3", with: ConnectionController(using: FakeConnectionDataSource())),
-            ], currentPrinter: Printer("Prusa i3 Mk3", with: ConnectionController(using: FakeConnectionDataSource())))
+//                Printer("Prusa i3 Mk3", with: ConnectionController(using: FakeConnectionDataSource())),
+//                Printer("Ender 3", with: ConnectionController(using: FakeConnectionDataSource())),
+            ])
         }
     }
 }
