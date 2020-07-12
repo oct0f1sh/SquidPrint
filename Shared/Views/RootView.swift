@@ -10,13 +10,13 @@ import SwiftUI
 struct RootView: View {
     @Binding var printers: [Printer]
     @State var currentPrinter: Printer?
-    @State var selectedPage: Page
+    var startingPage: Page = .home
     
     var body: some View {
         NavigationView {
             RootSidebar(printers: $printers, currentPrinter: $currentPrinter)
-            PrinterSidebar(printer: currentPrinter, selectedPage: $selectedPage)
-            PageHost(page: selectedPage, printer: currentPrinter)
+            PrinterSidebar(printer: currentPrinter)
+            PageHost(page: startingPage, printer: currentPrinter)
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
@@ -29,11 +29,11 @@ struct RootSidebar: View {
     var body: some View {
         List {
             ForEach(printers) { printer in
-                Button(action: {
-                    currentPrinter = printer
-                }, label: {
-                    Label(printer.name, systemImage: "cube.box.fill")
-                })
+                NavigationLink(
+                    destination: PrinterSidebar(printer: printer),
+                    label: {
+                        Label(printer.name, systemImage: "cube.box")
+                    })
             }
             
             Button(action: addPrinter, label: {
@@ -44,7 +44,7 @@ struct RootSidebar: View {
         }
         .padding(.leading, 1.0)
         .listStyle(SidebarListStyle())
-        .navigationTitle("SquidPrint")
+        .navigationTitle("3D Printers")
     }
     
     func addPrinter() {
@@ -56,7 +56,10 @@ struct RootView_Previews: PreviewProvider {
     @StateObject static var printerStore = PrinterStore(mockData: true)
     
     static var previews: some View {
-        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, selectedPage: .landing)
-            .layoutLandscapeiPad()
+        Group {
+            RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, startingPage: .landing)
+                .layoutLandscapeiPad()
+        }
+        
     }
 }

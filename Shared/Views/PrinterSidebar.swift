@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PrinterSidebar: View {
     @State var printer: Printer?
-    @Binding var selectedPage: Page
     
     private let pages: [Page] = [.home, .connection, .files]
     
@@ -17,11 +16,11 @@ struct PrinterSidebar: View {
         VStack {
             if let printer = printer {
                 List(pages, id: \.self) { page in
-                    Button(action: {
-                        selectedPage = page
-                    }, label: {
-                        Label(page.rawValue.capitalized, systemImage: page.thumbnail)
-                    })
+                    NavigationLink(
+                        destination: PageHost(page: page, printer: printer),
+                        label: {
+                            Label(page.rawValue.capitalized, systemImage: page.thumbnail)
+                        })
                 }
                 .navigationTitle(printer.name)
                 .listStyle(SidebarListStyle())
@@ -39,7 +38,7 @@ struct PrinterSidebar_Previews: PreviewProvider {
     @StateObject static var printerStore = PrinterStore(mockData: true)
     
     static var previews: some View {
-        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, selectedPage: .landing)
+        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, startingPage: .landing)
             .layoutLandscapeiPad()
     }
 }
