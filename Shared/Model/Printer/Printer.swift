@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct PrinterProfile: Codable {
+    let id: String
+    let name: String
+}
+
 class Printer: Identifiable, ObservableObject {
     @Published var name: String
     var id: String {

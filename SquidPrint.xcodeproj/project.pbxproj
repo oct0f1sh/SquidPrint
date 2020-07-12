@@ -34,7 +34,6 @@
 		AEC20E1B24AD2D5700BAC4CD /* SquidPrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB224A6CC720032B366 /* SquidPrintApp.swift */; };
 		AEC20E1C24AD2D5700BAC4CD /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
 		AEC20E1D24AD2D5700BAC4CD /* PrinterSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECE5CB324A6CC720032B366 /* PrinterSidebar.swift */; };
-		AEC20E1E24AD2D5700BAC4CD /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
 		AEC20E2824AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
 		AEC20E2924AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
 		AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E2724AD3E5800BAC4CD /* URLSession+NetworkSession.swift */; };
@@ -50,8 +49,6 @@
 		AECE5CCA24A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
 		AEE4BE7A24AABBB40030BE06 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */; };
 		AEE4BE7B24AABBB40030BE06 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */; };
-		AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
-		AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */; };
 		AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
 		AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
 		AEEF22D024A9853A0041BA36 /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
@@ -59,6 +56,9 @@
 		AEFE052124BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */; };
 		AEFE052224BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */; };
 		AEFE052324BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */; };
+		AEFE052524BA8C8F00EDC93B /* PrinterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */; };
+		AEFE052624BA8C8F00EDC93B /* PrinterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */; };
+		AEFE052724BA8C8F00EDC93B /* PrinterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,10 +94,10 @@
 		AECE5CC324A6CC730032B366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AECE5CC424A6CC730032B366 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterManager.swift; sourceTree = "<group>"; };
-		AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterProfile.swift; sourceTree = "<group>"; };
 		AEE4BE7F24AAC0190030BE06 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPage.swift; sourceTree = "<group>"; };
 		AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+LandscapeiPad.swift"; sourceTree = "<group>"; };
+		AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				AE206E4124B41E1600F06AA6 /* Printer.swift */,
-				AE505FE924B41B2200FBB821 /* Connection */,
+				AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */,
 				AEE4BE7924AABBB40030BE06 /* PrinterManager.swift */,
-				AEE4BE7C24AABF0E0030BE06 /* PrinterProfile.swift */,
+				AE505FE924B41B2200FBB821 /* Connection */,
 			);
 			path = Printer;
 			sourceTree = "<group>";
@@ -423,8 +423,8 @@
 				AE6A06E324B57358004E124B /* RootView.swift in Sources */,
 				AEC20E1D24AD2D5700BAC4CD /* PrinterSidebar.swift in Sources */,
 				AEFE052324BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */,
+				AEFE052724BA8C8F00EDC93B /* PrinterStore.swift in Sources */,
 				AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */,
-				AEC20E1E24AD2D5700BAC4CD /* PrinterProfile.swift in Sources */,
 				AE064FE924BA6EEC00F0F910 /* PageHost.swift in Sources */,
 				AEC20E1824AD2C4500BAC4CD /* NetworkManager.swift in Sources */,
 				AE206E4024B41BC300F06AA6 /* ConnectionController.swift in Sources */,
@@ -447,7 +447,7 @@
 				AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */,
 				AE206E4224B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
-				AEE4BE7D24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
+				AEFE052524BA8C8F00EDC93B /* PrinterStore.swift in Sources */,
 				AECE5CC724A6CC730032B366 /* PrinterSidebar.swift in Sources */,
 				AEC20E3024B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D024A9853A0041BA36 /* ConnectionPage.swift in Sources */,
@@ -470,7 +470,7 @@
 				AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */,
 				AE206E4324B41E1600F06AA6 /* Printer.swift in Sources */,
 				AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
-				AEE4BE7E24AABF0E0030BE06 /* PrinterProfile.swift in Sources */,
+				AEFE052624BA8C8F00EDC93B /* PrinterStore.swift in Sources */,
 				AECE5CC824A6CC730032B366 /* PrinterSidebar.swift in Sources */,
 				AEC20E3124B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEEF22D124A9853A0041BA36 /* ConnectionPage.swift in Sources */,
