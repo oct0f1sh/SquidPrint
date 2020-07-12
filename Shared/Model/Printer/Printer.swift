@@ -8,16 +8,14 @@
 import Foundation
 
 class Printer: Identifiable, ObservableObject {
-    // Published means that a notification will be sent whenever the object is changed
     @Published var name: String
+    var id: String {
+        get { name }
+    }
     
     @Published var connectionController: ConnectionController
     var connection: Connection? {
         get { connectionController.connection }
-    }
-    
-    var id: String {
-        get { name }
     }
     
     init(_ name: String, using networkManager: NetworkManager) {
