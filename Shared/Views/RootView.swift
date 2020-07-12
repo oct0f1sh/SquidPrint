@@ -13,7 +13,6 @@ struct RootView: View {
     @State private var isPresentingAddPrinter: Bool = false
     var startingPage: Page = .home
     
-    
     var body: some View {
         NavigationView {
             RootSidebar(printers: $printers, currentPrinter: $currentPrinter, isPresentingAddPrinter: $isPresentingAddPrinter)
@@ -47,32 +46,34 @@ struct AddPrinterView: View {
     var handler: (_ name: String, _ url: String, _ apiKey: String) -> Void
     
     var body: some View {
-        Text("New Printer").font(.title).padding(.top, 20)
-        Form {
-            Section {
-                HStack {
-                    Text("Name: ")
-                    TextField("Prusa i3 Mk3", text: $printerName)
-                }
-                HStack {
-                    Text("URL: ")
-                    TextField("octopi.local", text: $printerURL)
-                }
-                HStack {
-                    Text("API Key: ")
-                    TextField("API KEY", text: $printerAPIKey)
+        Group {
+            Text("New Printer").font(.title).padding(.top, 20)
+            Form {
+                Section {
+                    HStack {
+                        Text("Name: ")
+                        TextField("Prusa i3 Mk3", text: $printerName)
+                    }
+                    HStack {
+                        Text("URL: ")
+                        TextField("octopi.local", text: $printerURL)
+                    }
+                    HStack {
+                        Text("API Key: ")
+                        TextField("API KEY", text: $printerAPIKey)
+                    }
                 }
             }
+            
+            Button(action: { handler(printerName, printerURL, printerAPIKey) }, label: {
+                Text("Add printer")
+            })
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.accentColor)
+            .cornerRadius(10)
         }
-        
-        Button(action: { handler(printerName, printerURL, printerAPIKey) }, label: {
-            Text("Add printer")
-        })
-        .padding()
-        .foregroundColor(.white)
-        .background(Color.accentColor)
-        .cornerRadius(10)
-        .padding(.bottom, 10)
+//        .padding(.bottom, 10)
     }
 }
 

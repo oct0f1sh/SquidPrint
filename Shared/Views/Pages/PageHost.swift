@@ -36,15 +36,17 @@ struct PageHost: View {
     @State var printer: Printer?
     
     var body: some View {
-        if let printer = printer {
-            switch page {
-            case .connection:
-                ConnectionPage(connectionController: printer.connectionController)
-            default:
-                LandingPage(title: page.rawValue)
+        Group {
+            if let printer = printer {
+                switch page {
+                case .connection:
+                    ConnectionPage(connectionController: printer.connectionController)
+                default:
+                    LandingPage(title: page.rawValue)
+                }
+            } else {
+                LandingPage(title: "Welcome to SquidPrint")
             }
-        } else {
-            LandingPage(title: "Welcome to SquidPrint")
         }
     }
 }
