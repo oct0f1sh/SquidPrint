@@ -52,8 +52,10 @@ struct PageHost: View {
 }
 
 struct PageHost_Previews: PreviewProvider {
+    @StateObject static var printerStore = PrinterStore(mockData: true)
+    
     static var previews: some View {
-        PageHost(page: .home, printer: Printer("Yeet", with: ConnectionController(using: FakeConnectionDataSource())))
+        PageHost(page: .home, printer: printerStore.printers[0])
             .layoutLandscapeiPad()
     }
 }

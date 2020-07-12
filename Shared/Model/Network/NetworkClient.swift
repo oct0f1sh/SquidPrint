@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  NetworkClient.swift
 //  SquidPrint
 //
 //  Created by Duncan MacDonald on 7/1/20.
@@ -17,17 +17,17 @@ enum Endpoint: String {
     case files = "api/files"
 }
 
-class NetworkManager {
+class NetworkClient {
     var session: NetworkSession
-    var serverConfig: OctoPrintAPIConfig
+    var serverConfig: ServerConfiguration
     
-    init(with config: OctoPrintAPIConfig, using session: NetworkSession = URLSession.shared) {
+    init(with config: ServerConfiguration, using session: NetworkSession = URLSession.shared) {
         self.session = session
         self.serverConfig = config
     }
     
     func url(for endpoint: Endpoint) -> URL {
-        return serverConfig.serverURL.appendingPathComponent(endpoint.rawValue)
+        return serverConfig.url.appendingPathComponent(endpoint.rawValue)
     }
     
     func publisher(from endpoint: Endpoint) -> URLSession.DataTaskPublisher {
@@ -39,8 +39,8 @@ class NetworkManager {
     }
 }
 
-internal extension NetworkManager {
-    static var previewData: NetworkManager = {
-        NetworkManager(with: OctoPrintAPIConfig(serverURL: "example.com", apiKey: "XXXXXX"))
+internal extension NetworkClient {
+    static var previewData: NetworkClient = {
+        NetworkClient(with: ServerConfiguration(url: URL(staticString: "example.com"), apiKey: "XXXXXX"))
     }()
 }

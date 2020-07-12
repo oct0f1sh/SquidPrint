@@ -34,10 +34,10 @@ class ConnectionController: ObservableObject {
 }
 
 class RemoteConnectionDataSource: ConnectionDataSource {
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkClient
     
-    init(using networkManager: NetworkManager) {
-        self.networkManager = networkManager
+    init(using networkClient: NetworkClient) {
+        self.networkManager = networkClient
     }
     
     func update(_ completion: @escaping (Connection?) -> Void) {

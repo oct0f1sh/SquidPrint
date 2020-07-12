@@ -28,8 +28,8 @@ struct RootView: View {
     func addPrinter(_ name: String, _ stringUrl: String, _ apiKey: String) {
         guard let url = URL(string: stringUrl) else { return }
         
-        let apiConfig = OctoPrintAPIConfig(serverURL: url, apiKey: apiKey)
-        let networkManager = NetworkManager(with: apiConfig)
+        let apiConfig = ServerConfiguration(url: url, apiKey: apiKey)
+        let networkManager = NetworkClient(with: apiConfig)
         let printer = Printer(name, using: networkManager)
         
         printers.append(printer)

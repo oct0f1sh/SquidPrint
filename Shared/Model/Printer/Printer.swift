@@ -14,6 +14,9 @@ struct PrinterProfile: Codable {
 
 class Printer: Identifiable, ObservableObject {
     @Published var name: String
+    var uuid: UUID = UUID()
+    let networkClient: NetworkClient
+    
     var id: String {
         get { name }
     }
@@ -23,14 +26,26 @@ class Printer: Identifiable, ObservableObject {
         get { connectionController.connection }
     }
     
-    init(_ name: String, using networkManager: NetworkManager) {
+    init(_ name: String, using networkClient: NetworkClient) {
         self.name = name
-        self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkManager))
+        self.networkClient = networkClient
+        self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkClient))
     }
     
-    init(_ name: String, with connectionController: ConnectionController) {
+    init(_ name: String, with connectionController: ConnectionController, using networkClient: NetworkClient) {
         self.name = name
         self.connectionController = connectionController
+        self.networkClient = networkClient
+    }
+    
+    init(from persistedData: PersistedPrinter, networkSession: NetworkSession = URLSession.shared) {
+        self.name = persistedData.name
+        self.uuid = persistedData.uuid
+        
+        let config = ServerConfiguration(url: persistedData.url, apiKey: persistedData.apiKey)
+        self.networkClient = NetworkClient(with: config, using: networkSession)
+        
+        self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkClient))
     }
     
     func update() {
