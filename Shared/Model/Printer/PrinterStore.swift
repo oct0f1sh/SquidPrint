@@ -11,11 +11,11 @@ import Foundation
 class PrinterStore: ObservableObject {
     @Published var printers: [Printer] = []
     
-    /// Helper to get the default documents directory
-    lazy var documentsURL: URL = {
+    /// Helper to get the URL of the persisted printer file in the documents directory
+    lazy var printersURL: URL = {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
-        return documentsDirectory
+        return documentsDirectory.appendingPathComponent("PersistedPrinters.json")
     }()
     
     /// Initialize a PrinterStore with mock data. Useful for using in SwiftUI previews
@@ -28,7 +28,6 @@ class PrinterStore: ObservableObject {
             
             printers = [
                 Printer("Prusa i3 Mk3", with: connectionController, using: networkClient),
-                Printer("Prusa i3 Mk3", with: connectionController, using: networkClient),
                 Printer("Ender 3", with: connectionController, using: networkClient)
             ]
         }
@@ -39,49 +38,40 @@ class PrinterStore: ObservableObject {
     
     /// Create a PrinterStore using the default documents directory
     init() {
-        fetchPrinters(from: documentsURL)
+        fetchPrinters(from: printersURL)
     }
     
     func updatePrinterList() {
-        fetchPrinters(from: documentsURL)
+        fetchPrinters(from: printersURL)
     }
     
-    /// Update `printers` from a local directory
-    /// - Parameter directory: The URL for the directory to check
-    private func fetchPrinters(from directory: URL) {
+    /// Update `printers` from a local file
+    /// - Parameter directory: The URL for the file to check
+    private func fetchPrinters(from file: URL) {
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: directory.path)
-            let decoder = JSONDecoder()
+            let printerData = try Data(contentsOf: printersURL)
+            let persistedPrinters = try JSONDecoder().decode([PersistedPrinter].self, from: printerData)
             
-            for file in files {
-                let fileFullURL = directory.appendingPathComponent(file)
-                let fileData = try Data(contentsOf: fileFullURL)
-                
-                let persistedPrinter = try decoder.decode(PersistedPrinter.self, from: fileData)
-                printers.append(Printer(from: persistedPrinter))
-            }
+            printers = persistedPrinters.compactMap { Printer(from: $0) }
+            print("Decoded \(printers.count) printers from file: \(file.path)")
         } catch let error {
             print("Error creating wrapper for documents URL: \(error.localizedDescription)")
         }
     }
     
     func saveAllPrinters() {
-        persistPrinters(to: documentsURL)
+        persistPrinters(to: printersURL)
     }
     
-    private func persistPrinters(to directory: URL) {
-        let encoder = JSONEncoder()
+    private func persistPrinters(to file: URL) {
+        let persistedPrinters = printers.compactMap { PersistedPrinter(for: $0) }
         
-        for printer in printers {
-            do {
-                let persistedPrinter = PersistedPrinter(for: printer)
-                let fileURL = directory.appendingPathComponent(printer.uuid.uuidString).appendingPathExtension(for: .json)
-                let data = try encoder.encode(persistedPrinter)
-                FileManager.default.createFile(atPath: fileURL.path, contents: data)
-                print("Saved printer to path: \(fileURL.absoluteString)")
-            } catch let error {
-                print("Error persisting printers to directory: \(error.localizedDescription)")
-            }
+        do {
+            let data = try JSONEncoder().encode(persistedPrinters)
+            FileManager.default.createFile(atPath: file.path, contents: data)
+            print("Persisted printers to file: \(file.path)")
+        } catch let error {
+            print("Error persisting printers to directory: \(error.localizedDescription)")
         }
     }
 }
