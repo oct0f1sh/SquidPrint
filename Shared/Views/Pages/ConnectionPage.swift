@@ -32,7 +32,7 @@ struct ConnectionPage_Previews: PreviewProvider {
     @StateObject static var printerStore = PrinterStore(mockData: true)
     
     static var previews: some View {
-        RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first!, startingPage: .connection)
+        RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first!, startingPage: .connection)
             .layoutLandscapeiPad()
     }
 }

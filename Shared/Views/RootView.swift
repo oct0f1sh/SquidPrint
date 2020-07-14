@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RootView: View {
-    @Binding var printers: [Printer]
+    @ObservedObject var printerStore: PrinterStore
     @State var currentPrinter: Printer?
     @State private var isPresentingAddPrinter: Bool = false
     var startingPage: Page = .home
     
     var body: some View {
         NavigationView {
-            RootSidebar(printers: $printers, currentPrinter: $currentPrinter, isPresentingAddPrinter: $isPresentingAddPrinter)
+            RootSidebar(printerStore: printerStore, currentPrinter: $currentPrinter, isPresentingAddPrinter: $isPresentingAddPrinter)
             PrinterSidebar(printer: currentPrinter)
             PageHost(page: startingPage, printer: currentPrinter)
         }
@@ -32,58 +32,20 @@ struct RootView: View {
         let networkManager = NetworkClient(with: apiConfig)
         let printer = Printer(name, using: networkManager)
         
-        printers.append(printer)
+        printerStore.printers.append(printer)
         
         isPresentingAddPrinter = false
     }
 }
 
-struct AddPrinterView: View {
-    @State private var printerName: String = ""
-    @State private var printerURL: String = ""
-    @State private var printerAPIKey: String = ""
-    
-    var handler: (_ name: String, _ url: String, _ apiKey: String) -> Void
-    
-    var body: some View {
-        Group {
-            Text("New Printer").font(.title).padding(.top, 20)
-            Form {
-                Section {
-                    HStack {
-                        Text("Name: ")
-                        TextField("Prusa i3 Mk3", text: $printerName)
-                    }
-                    HStack {
-                        Text("URL: ")
-                        TextField("octopi.local", text: $printerURL)
-                    }
-                    HStack {
-                        Text("API Key: ")
-                        TextField("API KEY", text: $printerAPIKey)
-                    }
-                }
-            }
-            
-            Button(action: { handler(printerName, printerURL, printerAPIKey) }, label: {
-                Text("Add printer")
-            })
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.accentColor)
-            .cornerRadius(10)
-        }
-    }
-}
-
 struct RootSidebar: View {
-    @Binding var printers: [Printer]
+    @ObservedObject var printerStore: PrinterStore
     @Binding var currentPrinter: Printer?
     @Binding var isPresentingAddPrinter: Bool
     
     var body: some View {
         List {
-            ForEach(printers) { printer in
+            ForEach(printerStore.printers) { printer in
                 NavigationLink(
                     destination: PrinterSidebar(printer: printer),
                     label: {
@@ -98,6 +60,13 @@ struct RootSidebar: View {
             })
             .foregroundColor(.blue)
             .buttonStyle(BorderlessButtonStyle())
+            
+            Button("Get Printers...") {
+                printerStore.updatePrinterList()
+            }
+            Button("Save Printers...") {
+                printerStore.saveAllPrinters()
+            }
         }
         .padding(.leading, 1.0)
         .listStyle(SidebarListStyle())
@@ -110,7 +79,7 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, startingPage: .landing)
+            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first, startingPage: .landing)
                 .layoutLandscapeiPad()
         }
     }

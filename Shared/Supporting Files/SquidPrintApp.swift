@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct SquidPrintApp: App {
-    @StateObject var printerStore = PrinterStore(mockData: true)
+    @StateObject var printerStore = PrinterStore(mockData: false, skipFetchPrinters: false)
     
     var body: some Scene {
         WindowGroup {
-            RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first)
+            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first)
         }
     }
 }
