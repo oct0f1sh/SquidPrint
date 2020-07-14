@@ -14,6 +14,13 @@ struct PersistedPrinter: Codable {
     let apiKey: String
     let name: String
     let uuid: UUID
+    
+    init(for printer: Printer) {
+        self.url = printer.networkClient.serverConfig.url
+        self.apiKey = printer.networkClient.serverConfig.apiKey
+        self.name = printer.name
+        self.uuid = printer.uuid
+    }
 }
 
 enum PrinterDocumentError: Error {
@@ -29,7 +36,7 @@ struct PersistedPrinterDocument: FileDocument {
         guard let data = fileWrapper.regularFileContents else {
             throw PrinterDocumentError.decodingError("Error decoding file: \(fileWrapper.filename ?? "nil")")
         }
-            persistedPrinter = try JSONDecoder().decode(PersistedPrinter.self, from: data)
+        persistedPrinter = try JSONDecoder().decode(PersistedPrinter.self, from: data)
     }
     
     func write(to fileWrapper: inout FileWrapper, contentType: UTType) throws {
