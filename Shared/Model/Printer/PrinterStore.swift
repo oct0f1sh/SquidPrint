@@ -19,7 +19,7 @@ class PrinterStore: ObservableObject {
     }()
     
     /// Initialize a PrinterStore with mock data. Useful for using in SwiftUI previews
-    /// - Parameter mockData: whether or not to use mock data
+    /// - Parameter mockData: whether or not to populate `printers` with fake data
     init(mockData: Bool = false) {
         if mockData {
             let networkClient = NetworkClient(with: ServerConfiguration(url: URL(staticString: "google.com"), apiKey: "12345"))
@@ -31,6 +31,7 @@ class PrinterStore: ObservableObject {
                 Printer("Ender 3", with: connectionController, using: networkClient)
             ]
         } else {
+            // TODO: This really should have its own init or something
             fetchPrinters(from: documentsURL)
         }
     }
@@ -44,7 +45,7 @@ class PrinterStore: ObservableObject {
     /// - Parameter directory: The URL for the directory to check
     func fetchPrinters(from directory: URL) {
         do {
-            let directoryWrapper = try FileWrapper(url: directory, options: .immediate)
+            let directoryWrapper = try FileWrapper(url: directory)
             
             directoryWrapper.fileWrappers?.forEach({ fileName, fileWrapper in
                 if let persistedPrinterDocument = try? PersistedPrinterDocument(fileWrapper: fileWrapper, contentType: .json) {
@@ -55,6 +56,23 @@ class PrinterStore: ObservableObject {
             })
         } catch let error {
             print("Error creating wrapper for documents URL: \(error.localizedDescription)")
+        }
+    }
+    
+    func saveAllPrinters() {
+        persistPrinters(to: documentsURL)
+    }
+    
+    private func persistPrinters(to directory: URL) {
+        for printer in printers {
+            do {
+                let persistedPrinterDocument = PersistedPrinterDocument(for: printer)
+                let fileURL = directory.appendingPathComponent(printer.uuid.uuidString).appendingPathExtension(for: .json)
+                var fileWrapper = try FileWrapper(url: fileURL)
+                try persistedPrinterDocument.write(to: &fileWrapper, contentType: .json)
+            } catch let error {
+                print("Error persisting printers to directory: \(error.localizedDescription)")
+            }
         }
     }
 }

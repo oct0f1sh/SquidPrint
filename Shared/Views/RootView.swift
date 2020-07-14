@@ -73,7 +73,6 @@ struct AddPrinterView: View {
             .background(Color.accentColor)
             .cornerRadius(10)
         }
-//        .padding(.bottom, 10)
     }
 }
 
@@ -114,6 +113,5 @@ struct RootView_Previews: PreviewProvider {
             RootView(printers: $printerStore.printers, currentPrinter: printerStore.printers.first, startingPage: .landing)
                 .layoutLandscapeiPad()
         }
-        
     }
 }

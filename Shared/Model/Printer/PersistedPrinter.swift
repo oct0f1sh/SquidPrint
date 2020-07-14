@@ -32,6 +32,14 @@ struct PersistedPrinterDocument: FileDocument {
     
     static var readableContentTypes: [UTType] = [.json]
     
+    init(persistedPrinter: PersistedPrinter) {
+        self.persistedPrinter = persistedPrinter
+    }
+    
+    init(for printer: Printer) {
+        self.persistedPrinter = PersistedPrinter(for: printer)
+    }
+    
     init(fileWrapper: FileWrapper, contentType: UTType) throws {
         guard let data = fileWrapper.regularFileContents else {
             throw PrinterDocumentError.decodingError("Error decoding file: \(fileWrapper.filename ?? "nil")")
