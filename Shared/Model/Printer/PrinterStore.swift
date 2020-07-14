@@ -9,7 +9,7 @@ import Foundation
 
 /// A local source of printers. When initialized, `PrinterStore` checks the default document directory for `PersistedPrinterDocuments` that are used to populate `printers`.
 class PrinterStore: ObservableObject {
-    @Published var printers: [Printer] = []
+    @Published private(set) var printers: [Printer] = []
     
     /// Helper to get the URL of the persisted printer file in the documents directory
     lazy var printersURL: URL = {
@@ -73,5 +73,15 @@ class PrinterStore: ObservableObject {
         } catch let error {
             print("Error persisting printers to directory: \(error.localizedDescription)")
         }
+    }
+    
+    func addPrinter(_ printer: Printer) {
+        printers.append(printer)
+        saveAllPrinters()
+    }
+    
+    func deletePrinter(atOffsets: IndexSet) {
+        printers.remove(atOffsets: atOffsets)
+        saveAllPrinters()
     }
 }

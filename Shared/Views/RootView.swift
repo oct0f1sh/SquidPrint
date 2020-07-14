@@ -32,7 +32,7 @@ struct RootView: View {
         let networkManager = NetworkClient(with: apiConfig)
         let printer = Printer(name, using: networkManager)
         
-        printerStore.printers.append(printer)
+        printerStore.addPrinter(printer)
         
         isPresentingAddPrinter = false
     }
@@ -52,6 +52,9 @@ struct RootSidebar: View {
                         Label(printer.name, systemImage: "cube.box")
                     })
             }
+            .onDelete { indexSet in
+                printerStore.deletePrinter(atOffsets: indexSet)
+            }
             
             Button(action: {
                 isPresentingAddPrinter = true
@@ -60,13 +63,6 @@ struct RootSidebar: View {
             })
             .foregroundColor(.blue)
             .buttonStyle(BorderlessButtonStyle())
-            
-            Button("Get Printers...") {
-                printerStore.updatePrinterList()
-            }
-            Button("Save Printers...") {
-                printerStore.saveAllPrinters()
-            }
         }
         .padding(.leading, 1.0)
         .listStyle(SidebarListStyle())
