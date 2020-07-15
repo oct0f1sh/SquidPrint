@@ -38,11 +38,14 @@ class PrinterTests: XCTestCase {
         XCTAssertEqual(printer.connectionController.connection, connectionController.connection, "Printer connection controller has expected connection")
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testInitFromPersistedPrinter() throws {
+        let printerToPersist = Printer("A Squid", using: networkClient)
+        let persistedPrinter = PersistedPrinter(for: printerToPersist)
+        
+        printer = Printer(from: persistedPrinter)
+        
+        XCTAssertNotNil(printer)
+        XCTAssertEqual(printer.name, "A Squid", "Printer has expected name")
+        XCTAssertEqual(printer.networkClient.serverConfig, serverConfig, "Printer has expected server config")
     }
-
 }
