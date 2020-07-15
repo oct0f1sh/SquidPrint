@@ -8,59 +8,67 @@
 import XCTest
 
 fileprivate class MockNetworkSession: NetworkSession {
+    let baseURL: URL
+    
+    init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+    
     func getPublisher(from url: URL) -> URLSession.DataTaskPublisher {
         URLSession.shared.dataTaskPublisher(for: url)
     }
     
     func loadData(from url: URL, _ response: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        // url.path gives us the path of the URL without the URL host. Ex: "dunc.info/api/connection" -> "/api/connection"
-        var path = url.path
-        // We need to remove the leading `/` in order to be able to initialize Endpoint with a RawValue
-        path.removeFirst()
-        
-        guard let endpoint = Endpoint(rawValue: path) else {
-            response(nil, nil, nil)
-            return
-        }
-        response(endpoint.expectedResponse(), nil, nil)
+        response(url.absoluteString.data(using: .utf8), nil, nil)
     }
 }
 
-class NetworkManagerTests: XCTestCase {
+class NetworkClientTests: XCTestCase {
     fileprivate var session: MockNetworkSession!
-    var config: OctoPrintServerConfig!
-    var networkManager: NetworkManager!
-    let serverURL: URL = URL(staticString: "http://dunc.info")
+    var config: ServerConfiguration!
+    var client: NetworkClient!
+    
+    var endpoints: [Endpoint] = [.connection, .files]
     
     override func setUp() {
-        config = OctoPrintServerConfig(serverURL: serverURL, apiKey: "")
-        session = MockNetworkSession()
-        networkManager = NetworkManager(with: config, using: session)
+        let serverURL = URL(staticString: "example.com")
+        config = ServerConfiguration(url: serverURL, apiKey: "APIKEY")
+        session = MockNetworkSession(baseURL: serverURL)
+        client = NetworkClient(with: config, using: session)
     }
 
     func testGeneratesURLsForEndpoints() {
-        // Make sure that we have endpoints to iterate over
-        XCTAssertTrue(!Endpoint.allEndpoints.isEmpty)
-        
-        for endpoint in Endpoint.allEndpoints {
-            let url = networkManager.url(for: endpoint)
-            let expectedURL = endpoint.expectedURL(withHost: serverURL)
+        for endpoint in endpoints {
+            let url = client.url(for: endpoint)
+            var expectedURL: URL!
+            
+            switch endpoint {
+            case .connection:
+                expectedURL = URL(staticString: "example.com/api/connection")
+            case .files:
+                expectedURL = URL(staticString: "example.com/api/files")
+            }
             
             XCTAssertEqual(url, expectedURL)
         }
     }
     
     func testLoadsDataForEndpoint() {
-        for endpoint in Endpoint.allEndpoints {
+        for endpoint in endpoints {
             let loadExpectation = expectation(description: "Data is loaded")
-            networkManager.loadData(from: endpoint) { data, _, _ in
+            client.loadData(from: endpoint) { data, _, _ in
                 guard let data = data else {
                     XCTFail("Expected response could not be loaded for endpoint: \(endpoint)")
                     loadExpectation.fulfill()
                     return
                 }
-                // Right now expectedResponse is just giving the enum RawValue as a response
-                XCTAssertEqual(String(data: data, encoding: .utf8), endpoint.rawValue)
+                
+                XCTAssertNotNil(String(data: data, encoding: .utf8), "Response should not be nil")
+                
+                XCTAssertEqual(String(data: data, encoding: .utf8),
+                               self.client.url(for: endpoint).absoluteString,
+                               "Response should be the full URL for the endpoint") // MockNetworkSession just returns the URL as Data
+                
                 loadExpectation.fulfill()
             }
             waitForExpectations(timeout: 1, handler: nil)
