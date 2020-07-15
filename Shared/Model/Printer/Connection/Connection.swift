@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct Connection: Codable {
-    struct Options: Codable {
+struct Connection: Codable, Equatable {
+    struct Options: Codable, Equatable {
         let baudrates: [Int]
         let ports: [String]
         let printerProfiles: [PrinterProfile]
     }
     
-    private enum RootCodingKeys: String, CodingKey {
+    private enum RootCodingKeys: String, CodingKey, Equatable {
         case current
         case options
     }
     
-    private enum CurrentConnectionCodingKeys: String, CodingKey {
+    private enum CurrentConnectionCodingKeys: String, CodingKey, Equatable {
         case baudrate
         case port
         case printerProfileID = "printerProfile"

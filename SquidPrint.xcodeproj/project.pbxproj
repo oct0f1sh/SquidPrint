@@ -58,6 +58,7 @@
 		AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
 		AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
 		AEEC373D24BEA2430014A123 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC373C24BEA2430014A123 /* MockNetworkSession.swift */; };
+		AEEC374024BEA3650014A123 /* PrinterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC373F24BEA3650014A123 /* PrinterTests.swift */; };
 		AEEF22D024A9853A0041BA36 /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
 		AEEF22D124A9853A0041BA36 /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
 		AEFE052124BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */; };
@@ -105,6 +106,7 @@
 		AECE5CC424A6CC730032B366 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		AEE4BE7F24AAC0190030BE06 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AEEC373C24BEA2430014A123 /* MockNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSession.swift; sourceTree = "<group>"; };
+		AEEC373F24BEA3650014A123 /* PrinterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterTests.swift; sourceTree = "<group>"; };
 		AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPage.swift; sourceTree = "<group>"; };
 		AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+LandscapeiPad.swift"; sourceTree = "<group>"; };
 		AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStore.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		AEC20E2024AD317500BAC4CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AEEC373E24BEA3080014A123 /* Printer */,
 				AEC20E2124AD318900BAC4CD /* Network */,
 			);
 			path = Model;
@@ -296,6 +299,14 @@
 				AEC20E1424AD2C3500BAC4CD /* Network */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AEEC373E24BEA3080014A123 /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				AEEC373F24BEA3650014A123 /* PrinterTests.swift */,
+			);
+			path = Printer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +440,7 @@
 				AEC20E0F24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */,
 				AEC20E3224B3FE4B00BAC4CD /* LandingPage.swift in Sources */,
 				AEC20E1B24AD2D5700BAC4CD /* SquidPrintApp.swift in Sources */,
+				AEEC374024BEA3650014A123 /* PrinterTests.swift in Sources */,
 				AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1C24AD2D5700BAC4CD /* ConnectionPage.swift in Sources */,
 				AEC20E0424AD274C00BAC4CD /* NetworkClientTests.swift in Sources */,

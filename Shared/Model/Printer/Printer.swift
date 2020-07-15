@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrinterProfile: Codable {
+struct PrinterProfile: Codable, Equatable {
     let id: String
     let name: String
 }

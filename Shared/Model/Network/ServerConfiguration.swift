@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ServerConfiguration: Codable {
+struct ServerConfiguration: Codable, Equatable {
     let url: URL
     let apiKey: String
 }
