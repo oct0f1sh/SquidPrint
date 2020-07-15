@@ -24,6 +24,7 @@ struct ConnectionPage: View {
                     Spacer()
                 }
             }
+            .navigationTitle("Connection")
         }
     }
 }
@@ -32,7 +33,10 @@ struct ConnectionPage_Previews: PreviewProvider {
     @StateObject static var printerStore = PrinterStore(mockData: true)
     
     static var previews: some View {
-        RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first!, startingPage: .connection)
-            .layoutLandscapeiPad()
+        Group {
+            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first!, startingPage: .connection)
+                .layoutLandscapeiPad()
+            ConnectionPage(connectionController: printerStore.printers[0].connectionController)
+        }
     }
 }
