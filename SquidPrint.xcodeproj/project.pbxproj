@@ -28,7 +28,7 @@
 		AE6A06E124B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
 		AE6A06E224B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
 		AE6A06E324B57358004E124B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A06E024B57358004E124B /* RootView.swift */; };
-		AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */; };
+		AEC20E0424AD274C00BAC4CD /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0324AD274C00BAC4CD /* NetworkClientTests.swift */; };
 		AEC20E0D24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
 		AEC20E0E24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
 		AEC20E0F24AD28DE00BAC4CD /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */; };
@@ -57,6 +57,7 @@
 		AECE5CCA24A6CC730032B366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AECE5CB424A6CC730032B366 /* Assets.xcassets */; };
 		AEE4BE8024AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
 		AEE4BE8124AAC0190030BE06 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4BE7F24AAC0190030BE06 /* Connection.swift */; };
+		AEEC373D24BEA2430014A123 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC373C24BEA2430014A123 /* MockNetworkSession.swift */; };
 		AEEF22D024A9853A0041BA36 /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
 		AEEF22D124A9853A0041BA36 /* ConnectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */; };
 		AEFE052124BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */; };
@@ -86,7 +87,7 @@
 		AE69824E24BBB8C400C828FD /* PersistedPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedPrinter.swift; sourceTree = "<group>"; };
 		AE6A06E024B57358004E124B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		AEC20E0124AD274C00BAC4CD /* SquidPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquidPrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		AEC20E0324AD274C00BAC4CD /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		AEC20E0524AD274C00BAC4CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEC20E0C24AD28DE00BAC4CD /* URL+StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+StaticString.swift"; sourceTree = "<group>"; };
 		AEC20E1024AD294600BAC4CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		AECE5CC324A6CC730032B366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AECE5CC424A6CC730032B366 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		AEE4BE7F24AAC0190030BE06 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		AEEC373C24BEA2430014A123 /* MockNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSession.swift; sourceTree = "<group>"; };
 		AEEF22CF24A9853A0041BA36 /* ConnectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPage.swift; sourceTree = "<group>"; };
 		AEFE052024BA7A4200EDC93B /* View+LandscapeiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+LandscapeiPad.swift"; sourceTree = "<group>"; };
 		AEFE052424BA8C8F00EDC93B /* PrinterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStore.swift; sourceTree = "<group>"; };
@@ -203,7 +205,7 @@
 		AEC20E2124AD318900BAC4CD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				AEC20E0324AD274C00BAC4CD /* NetworkManagerTests.swift */,
+				AEC20E0324AD274C00BAC4CD /* NetworkClientTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -211,6 +213,7 @@
 		AEC20E2224AD397100BAC4CD /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				AEEC373C24BEA2430014A123 /* MockNetworkSession.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -428,13 +431,14 @@
 				AEC20E1B24AD2D5700BAC4CD /* SquidPrintApp.swift in Sources */,
 				AEC20E2A24AD3E5800BAC4CD /* URLSession+NetworkSession.swift in Sources */,
 				AEC20E1C24AD2D5700BAC4CD /* ConnectionPage.swift in Sources */,
-				AEC20E0424AD274C00BAC4CD /* NetworkManagerTests.swift in Sources */,
+				AEC20E0424AD274C00BAC4CD /* NetworkClientTests.swift in Sources */,
 				AE5F4AE224BD51D10060F08F /* AddPrinterView.swift in Sources */,
 				AE206E4424B41E1600F06AA6 /* Printer.swift in Sources */,
 				AE62240924BBC1CD006EBBA5 /* ServerConfiguration.swift in Sources */,
 				AEC20E1924AD2D4300BAC4CD /* Connection.swift in Sources */,
 				AE6A06E324B57358004E124B /* RootView.swift in Sources */,
 				AEC20E1D24AD2D5700BAC4CD /* PrinterSidebar.swift in Sources */,
+				AEEC373D24BEA2430014A123 /* MockNetworkSession.swift in Sources */,
 				AEFE052324BA7A4200EDC93B /* View+LandscapeiPad.swift in Sources */,
 				AEFE052724BA8C8F00EDC93B /* PrinterStore.swift in Sources */,
 				AEC20E2C24AD496400BAC4CD /* Helpers.swift in Sources */,
