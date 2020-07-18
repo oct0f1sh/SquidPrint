@@ -14,28 +14,41 @@ struct ConnectionPage: View {
         get { connectionController.connection }
     }
     
+    let fallbackValue: String = "Disconnected"
+    
+    var isConnected: Bool {
+        connection != nil
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 Form {
-                    ConnectionPageCell(title: "Serial Port", value: "/dev/ttyACM0")
-                    ConnectionPageCell(title: "Baudrate", value: "115200")
-                    ConnectionPageCell(title: "Printer Profile", value: "Prusa i3 Mk3")
+                    ConnectionPageCell(title: "Serial Port",
+                                       value: connection?.port ?? fallbackValue)
+                    
+                    ConnectionPageCell(title: "Baudrate",
+                                       value: connection?.baudrate.description ?? fallbackValue)
+                    
+                    ConnectionPageCell(title: "Printer Profile",
+                                       value: connection?.printerProfileID ?? fallbackValue)
                     
                     Section {
-                        Toggle(isOn: .constant(true), label: {
+                        Toggle(isOn: .constant(false), label: {
                             Text("Save connection settings")
                         })
+                        .disabled(!isConnected)
                         
-                        Toggle(isOn: .constant(true), label: {
+                        Toggle(isOn: .constant(false), label: {
                             Text("Auto-connect on server startup")
                         })
+                        .disabled(!isConnected)
                     }
                     
                     HStack {
                         Spacer()
                         Button(action: {}, label: {
-                            Label("Disconnect", systemImage: "wifi.slash")
+                            Label((connection == nil ? "Connect" : "Disconnect"), systemImage: connection == nil ? "wifi" : "wifi.slash")
                         })
                         Spacer()
                     }
@@ -53,7 +66,7 @@ struct ConnectionPageCell: View {
     
     var body: some View {
         HStack {
-            Text(title).fontWeight(.bold)
+            Text(title)
             Spacer()
             Text(value).fontWeight(.light).foregroundColor(Color(.secondaryLabel))
         }
@@ -68,6 +81,9 @@ struct ConnectionPage_Previews: PreviewProvider {
             RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first!, startingPage: .connection)
                 .preferredColorScheme(.dark)
                 .layoutLandscapeiPad()
+            ConnectionPage(connectionController: ConnectionController(using: NilConnectionDataSource()))
+                .previewDevice("iPad (7th generation)")
+                .preferredColorScheme(.dark)
             ConnectionPage(connectionController: printerStore.printers[0].connectionController)
                 .previewDevice("iPhone 11")
                 .preferredColorScheme(.dark)

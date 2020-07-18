@@ -69,3 +69,9 @@ class FakeConnectionDataSource: ConnectionDataSource {
         completion(connection)
     }
 }
+
+class NilConnectionDataSource: ConnectionDataSource {
+    func update(_ completion: @escaping (Connection?) -> Void) {
+        completion(nil)
+    }
+}
