@@ -16,32 +16,33 @@ struct ConnectionPage: View {
     
     var body: some View {
         GeometryReader { geometry in
-            List {
-                ConnectionPageCell(title: "Serial Port", value: "/dev/ttyACM0")
-                ConnectionPageCell(title: "Baudrate", value: "115200")
-                ConnectionPageCell(title: "Printer Profile", value: "Prusa i3 Mk3")
-                
-//                HStack {
-//                    Button(action: {}, label: {
-//                        Image(systemName: "play.fill")
-//                            .padding(.vertical, 15)
-//                            .padding(.horizontal, 350 / 4 - 20)
-//                    })
-//                    .background(Color(.secondarySystemBackground))
-//                    .cornerRadius(10)
-//
-//                    Button(action: {}, label: {
-//                        Image(systemName: "pause.fill")
-//                            .padding(.vertical, 15)
-//                            .padding(.horizontal, 350 / 4 - 20)
-//                    })
-//                    .background(Color(.secondarySystemBackground))
-//                    .cornerRadius(10)
-//                }
-//                .frame(width: 350)
+            VStack {
+                Form {
+                    ConnectionPageCell(title: "Serial Port", value: "/dev/ttyACM0")
+                    ConnectionPageCell(title: "Baudrate", value: "115200")
+                    ConnectionPageCell(title: "Printer Profile", value: "Prusa i3 Mk3")
+                    
+                    Section {
+                        Toggle(isOn: .constant(true), label: {
+                            Text("Save connection settings")
+                        })
+                        
+                        Toggle(isOn: .constant(true), label: {
+                            Text("Auto-connect on server startup")
+                        })
+                    }
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {}, label: {
+                            Label("Disconnect", systemImage: "wifi.slash")
+                        })
+                        Spacer()
+                    }
+                }
+                .listStyle(PlainListStyle())
+                .navigationTitle("Connection")
             }
-            .listStyle(PlainListStyle())
-            .navigationTitle("Connection")
         }
     }
 }
@@ -54,9 +55,8 @@ struct ConnectionPageCell: View {
         HStack {
             Text(title).fontWeight(.bold)
             Spacer()
-            Text(value).fontWeight(.light).foregroundColor(Color(.systemGray))
+            Text(value).fontWeight(.light).foregroundColor(Color(.secondaryLabel))
         }
-        .frame(width: 350)
     }
 }
 
@@ -69,6 +69,7 @@ struct ConnectionPage_Previews: PreviewProvider {
                 .preferredColorScheme(.dark)
                 .layoutLandscapeiPad()
             ConnectionPage(connectionController: printerStore.printers[0].connectionController)
+                .previewDevice("iPhone 11")
                 .preferredColorScheme(.dark)
         }
     }
