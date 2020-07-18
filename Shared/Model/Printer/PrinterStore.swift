@@ -55,7 +55,7 @@ class PrinterStore: ObservableObject {
             printers = persistedPrinters.compactMap { Printer(from: $0) }
             print("Decoded \(printers.count) printers from file: \(file.path)")
         } catch let error {
-            print("Error creating wrapper for documents URL: \(error.localizedDescription)")
+            print("Error creating wrapper for documents URL: \(error)")
         }
     }
     

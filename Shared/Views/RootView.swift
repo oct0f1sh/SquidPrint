@@ -63,6 +63,16 @@ struct RootSidebar: View {
             })
             .foregroundColor(.blue)
             .buttonStyle(BorderlessButtonStyle())
+            
+            Divider()
+            
+            Button(action: {
+                printerStore.saveAllPrinters()
+            }, label: {
+                Label("Persist printers...", systemImage: "plusminus.circle")
+            })
+            .foregroundColor(.blue)
+            .buttonStyle(BorderlessButtonStyle())
         }
         .padding(.leading, 1.0)
         .listStyle(SidebarListStyle())
@@ -75,7 +85,7 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first, startingPage: .landing)
+            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first, startingPage: .connection)
                 .layoutLandscapeiPad()
         }
     }
