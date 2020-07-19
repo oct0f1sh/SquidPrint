@@ -61,7 +61,7 @@ struct RootSidebar: View {
             }, label: {
                 Label("Add a printer...", systemImage: "plus")
             })
-            .foregroundColor(.blue)
+            .foregroundColor(.accentColor)
             .buttonStyle(BorderlessButtonStyle())
             
             Divider()
@@ -71,7 +71,7 @@ struct RootSidebar: View {
             }, label: {
                 Label("Persist printers...", systemImage: "plusminus.circle")
             })
-            .foregroundColor(.blue)
+            .foregroundColor(.accentColor)
             .buttonStyle(BorderlessButtonStyle())
         }
         .padding(.leading, 1.0)

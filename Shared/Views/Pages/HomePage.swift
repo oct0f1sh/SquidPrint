@@ -10,10 +10,13 @@ import SwiftUI
 struct HomePage: View {
     var printer: Printer
     
+    var fallbackValue = "Disconnected"
+    
     var body: some View {
         VStack {
             Form {
-                ConnectionPageCell(title: "Printer State", value: "Printing...")
+                ConnectionPageCell(title: "Printer State",
+                                   value: printer.connection?.state ?? fallbackValue)
                 
                 Section {
                     ConnectionPageCell(title: "File Name", value: "buddy.gcode")

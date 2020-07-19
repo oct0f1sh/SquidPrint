@@ -27,7 +27,7 @@ class PrinterStore: ObservableObject {
             let connectionController = ConnectionController(using: FakeConnectionDataSource())
             
             printers = [
-                Printer("Prusa i3 Mk3", with: connectionController, using: networkClient),
+                Printer("Prusa i3 Mk4", with: connectionController, using: networkClient),
                 Printer("Ender 3", with: connectionController, using: networkClient)
             ]
         }

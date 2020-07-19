@@ -31,6 +31,14 @@ struct PrinterSidebar: View {
                 Text("Please add a printer")
             }
         }
+        // Refresh printer status
+        .toolbar {
+            ToolbarItem {
+                Button(action: { printer?.update() }, label: {
+                    Image(systemName: "arrow.2.circlepath.circle").font(.title2)
+                })
+            }
+        }
     }
 }
 
