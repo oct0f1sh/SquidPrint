@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SquidPrintApp: App {
-    @StateObject var printerStore = PrinterStore(mockData: false, skipFetchPrinters: false)
+    @StateObject var printerStore = PrinterStore(mockData: true, skipFetchPrinters: false)
     
     var body: some Scene {
         WindowGroup {
