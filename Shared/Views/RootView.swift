@@ -85,7 +85,7 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first, startingPage: .connection)
+            RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first, startingPage: .home)
                 .layoutLandscapeiPad()
         }
     }

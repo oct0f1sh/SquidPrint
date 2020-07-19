@@ -39,6 +39,8 @@ struct PageHost: View {
         Group {
             if let printer = printer {
                 switch page {
+                case .home:
+                    HomePage(printer: printer)
                 case .connection:
                     ConnectionPage(connectionController: printer.connectionController)
                 default:

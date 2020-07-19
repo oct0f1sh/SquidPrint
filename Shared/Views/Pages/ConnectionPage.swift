@@ -21,39 +21,37 @@ struct ConnectionPage: View {
     }
     
     var body: some View {
-        VStack {
-            Form {
-                ConnectionPageCell(title: "Serial Port",
-                                   value: connection?.port ?? fallbackValue)
+        Form {
+            ConnectionPageCell(title: "Serial Port",
+                               value: connection?.port ?? fallbackValue)
+            
+            ConnectionPageCell(title: "Baudrate",
+                               value: connection?.baudrate.description ?? fallbackValue)
+            
+            ConnectionPageCell(title: "Printer Profile",
+                               value: connection?.printerProfileID ?? fallbackValue)
+            
+            Section {
+                Toggle(isOn: .constant(false), label: {
+                    Text("Save connection settings")
+                })
+                .disabled(true) //!isConnected)
                 
-                ConnectionPageCell(title: "Baudrate",
-                                   value: connection?.baudrate.description ?? fallbackValue)
-                
-                ConnectionPageCell(title: "Printer Profile",
-                                   value: connection?.printerProfileID ?? fallbackValue)
-                
-                Section {
-                    Toggle(isOn: .constant(false), label: {
-                        Text("Save connection settings")
-                    })
-                    .disabled(true) //!isConnected)
-                    
-                    Toggle(isOn: .constant(false), label: {
-                        Text("Auto-connect on server startup")
-                    })
-                    .disabled(true) //!isConnected)
-                }
-                
-                HStack {
-                    Spacer()
-                    Button(action: {}, label: {
-                        Label((connection == nil ? "Connect" : "Disconnect"), systemImage: connection == nil ? "wifi" : "wifi.slash")
-                    })
-                    Spacer()
-                }
+                Toggle(isOn: .constant(false), label: {
+                    Text("Auto-connect on server startup")
+                })
+                .disabled(true) //!isConnected)
             }
-            .navigationTitle("Connection")
+            
+            HStack {
+                Spacer()
+                Button(action: {}, label: {
+                    Label((connection == nil ? "Connect" : "Disconnect"), systemImage: connection == nil ? "wifi" : "wifi.slash")
+                })
+                Spacer()
+            }
         }
+        .navigationTitle("Connection")
     }
 }
 

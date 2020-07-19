@@ -6,7 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum Constants {
+extension Color {
+    static var buttonBackground: Color {
+        get { Color("ButtonBackground") }
+    }
     
+    static var buttonForeground: Color {
+        get { Color("ButtonForeground") }
+    }
 }
