@@ -12,7 +12,15 @@ extension URLSession: NetworkSession {
         dataTaskPublisher(for: url)
     }
     
-    func loadData(from url: URL, _ response: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        dataTask(with: url, completionHandler: response)
+    func loadData(with urlRequest: URLRequest, _ response: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        dataTask(with: urlRequest, completionHandler: response).resume()
     }
+    
+    static var localSession: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+//        config.timeoutIntervalForResource = 60
+        
+        return URLSession(configuration: config)
+    }()
 }

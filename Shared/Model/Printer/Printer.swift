@@ -38,7 +38,7 @@ class Printer: Identifiable, ObservableObject {
         self.networkClient = networkClient
     }
     
-    init(from persistedData: PersistedPrinter, networkSession: NetworkSession = URLSession.shared) {
+    init(from persistedData: PersistedPrinter, networkSession: NetworkSession = URLSession.localSession) {
         self.name = persistedData.name
         self.uuid = persistedData.uuid
         

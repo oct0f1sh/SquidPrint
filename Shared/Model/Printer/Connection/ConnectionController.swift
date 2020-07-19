@@ -34,18 +34,20 @@ class ConnectionController: ObservableObject {
 }
 
 class RemoteConnectionDataSource: ConnectionDataSource {
-    private let networkManager: NetworkClient
+    private let networkClient: NetworkClient
     
     init(using networkClient: NetworkClient) {
-        self.networkManager = networkClient
+        self.networkClient = networkClient
     }
     
     func update(_ completion: @escaping (Connection?) -> Void) {
-        networkManager.loadData(from: .connection) { data, _, error in
+        networkClient.loadData(from: .connection) { data, _, error in
             guard let data = data, error == nil else {
                 completion(nil)
                 return
             }
+            
+            print(String(data: data, encoding: .utf8))
             
             if let connection = try? JSONDecoder().decode(Connection.self, from: data) {
                 completion(connection)

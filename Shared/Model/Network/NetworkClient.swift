@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkSession {
     func getPublisher(from url: URL) -> URLSession.DataTaskPublisher
-    func loadData(from url: URL, _ response: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func loadData(with urlRequest: URLRequest, _ response: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
 enum Endpoint: String {
@@ -21,7 +21,7 @@ class NetworkClient {
     var session: NetworkSession
     var serverConfig: ServerConfiguration
     
-    init(with config: ServerConfiguration, using session: NetworkSession = URLSession.shared) {
+    init(with config: ServerConfiguration, using session: NetworkSession = URLSession.localSession) {
         self.session = session
         self.serverConfig = config
     }
@@ -35,7 +35,10 @@ class NetworkClient {
     }
     
     func loadData(from endpoint: Endpoint, _ completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        session.loadData(from: url(for: endpoint), completion)
+        var urlRequest = URLRequest(url: url(for: endpoint))
+        urlRequest.addValue(serverConfig.apiKey, forHTTPHeaderField: "X-Api-Key")
+        
+        session.loadData(with: urlRequest, completion)
     }
 }
 

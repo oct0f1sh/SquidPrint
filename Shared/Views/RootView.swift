@@ -64,8 +64,6 @@ struct RootSidebar: View {
             .foregroundColor(.accentColor)
             .buttonStyle(BorderlessButtonStyle())
             
-            Divider()
-            
             Button(action: {
                 printerStore.saveAllPrinters()
             }, label: {
