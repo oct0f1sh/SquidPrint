@@ -10,7 +10,7 @@ import SwiftUI
 struct HomePage: View {
     @ObservedObject var connectionController: ConnectionController
     
-    var fallbackValue = "Disconnected"
+    var fallbackValue = "Unknown"
     
     var body: some View {
         VStack {
@@ -19,15 +19,15 @@ struct HomePage: View {
                                    value: connectionController.connection?.state ?? fallbackValue)
                 
                 Section {
-                    ConnectionPageCell(title: "File Name", value: "buddy.gcode")
-                    ConnectionPageCell(title: "Upload Date", value: "01-01-2020")
-                    ConnectionPageCell(title: "User", value: "API User")
+                    ConnectionPageCell(title: "File Name", value: fallbackValue)
+                    ConnectionPageCell(title: "Upload Date", value: fallbackValue)
+                    ConnectionPageCell(title: "User", value: fallbackValue)
                 }
                 
                 Section(footer: StateFormFooter().padding(.top, 10)) {
-                        ConnectionPageCell(title: "Current Print Time", value: "05:25:30")
-                        ConnectionPageCell(title: "Remaining Print Time", value: "01:15:00")
-                        ConnectionPageCell(title: "Percent Done", value: "80%")
+                        ConnectionPageCell(title: "Current Print Time", value: fallbackValue)
+                        ConnectionPageCell(title: "Remaining Print Time", value: fallbackValue)
+                        ConnectionPageCell(title: "Percent Done", value: fallbackValue)
                 }
             }
         }

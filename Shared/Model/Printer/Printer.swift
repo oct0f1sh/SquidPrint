@@ -58,11 +58,8 @@ class Printer: Identifiable, ObservableObject {
     
     func update() {
         self.cancellable = connectionController.dataSource.getPublisher()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { error in
-                print("Error updating printer status: \(error)")
-            }, receiveValue: { updatedConnection in
-                self.connectionController.connection = updatedConnection
-            })
+            .receive(on: RunLoop.main)
+            .replaceError(with: nil)
+            .assign(to: \.connection, on: connectionController)
     }
 }
