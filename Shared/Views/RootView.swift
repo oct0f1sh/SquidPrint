@@ -17,7 +17,12 @@ struct RootView: View {
         NavigationView {
             RootSidebar(printerStore: printerStore, currentPrinter: $currentPrinter, isPresentingAddPrinter: $isPresentingAddPrinter)
             PrinterSidebar(printer: currentPrinter)
-            PageHost(page: startingPage, printer: currentPrinter)
+            
+            if let printer = currentPrinter {
+                PageHost(page: startingPage, printer: printer)
+            } else {
+                LandingPage(title: "Welcome")
+            }
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
         .sheet(isPresented: $isPresentingAddPrinter) {

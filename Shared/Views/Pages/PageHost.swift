@@ -33,22 +33,16 @@ enum Page: String, Identifiable {
 
 struct PageHost: View {
     @State var page: Page
-    @State var printer: Printer?
+    @ObservedObject var printer: Printer
     
     var body: some View {
-        Group {
-            if let printer = printer {
-                switch page {
-                case .home:
-                    HomePage(printer: printer)
-                case .connection:
-                    ConnectionPage(connectionController: printer.connectionController)
-                default:
-                    LandingPage(title: page.rawValue)
-                }
-            } else {
-                LandingPage(title: "Welcome to SquidPrint")
-            }
+        switch page {
+        case .home:
+            HomePage(connectionController: printer.connectionController)
+        case .connection:
+            ConnectionPage(connectionController: printer.connectionController)
+        default:
+            LandingPage(title: page.rawValue)
         }
     }
 }

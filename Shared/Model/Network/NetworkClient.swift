@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkSession {
-    func getPublisher(from url: URL) -> URLSession.DataTaskPublisher
+    func getPublisher(with urlRequest: URLRequest) -> URLSession.DataTaskPublisher
     func loadData(with urlRequest: URLRequest, _ response: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
@@ -31,7 +31,10 @@ class NetworkClient {
     }
     
     func publisher(from endpoint: Endpoint) -> URLSession.DataTaskPublisher {
-        session.getPublisher(from: url(for: endpoint))
+        var urlRequest = URLRequest(url: url(for: endpoint))
+        urlRequest.addValue(serverConfig.apiKey, forHTTPHeaderField: "X-Api-Key")
+        
+        return session.getPublisher(with: urlRequest)
     }
     
     func loadData(from endpoint: Endpoint, _ completion: @escaping (Data?, URLResponse?, Error?) -> Void) {

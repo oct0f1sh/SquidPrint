@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct PrinterProfile: Codable, Equatable {
     let id: String
@@ -17,6 +18,8 @@ class Printer: Identifiable, ObservableObject {
     var uuid: UUID = UUID()
     let networkClient: NetworkClient
     
+    private var cancellable: AnyCancellable?
+    
     var id: String {
         get { name }
     }
@@ -24,12 +27,15 @@ class Printer: Identifiable, ObservableObject {
     @Published var connectionController: ConnectionController
     var connection: Connection? {
         get { connectionController.connection }
+        set { connectionController.connection = newValue }
     }
     
     init(_ name: String, using networkClient: NetworkClient) {
         self.name = name
         self.networkClient = networkClient
         self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkClient))
+        
+        update()
     }
     
     init(_ name: String, with connectionController: ConnectionController, using networkClient: NetworkClient) {
@@ -46,9 +52,17 @@ class Printer: Identifiable, ObservableObject {
         self.networkClient = NetworkClient(with: config, using: networkSession)
         
         self.connectionController = ConnectionController(using: RemoteConnectionDataSource(using: networkClient))
+        
+        update()
     }
     
     func update() {
-        connectionController.update()
+        self.cancellable = connectionController.dataSource.getPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { error in
+                print("Error updating printer status: \(error)")
+            }, receiveValue: { updatedConnection in
+                self.connectionController.connection = updatedConnection
+            })
     }
 }

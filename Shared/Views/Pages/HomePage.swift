@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomePage: View {
-    var printer: Printer
+    @ObservedObject var connectionController: ConnectionController
     
     var fallbackValue = "Disconnected"
     
@@ -16,7 +16,7 @@ struct HomePage: View {
         VStack {
             Form {
                 ConnectionPageCell(title: "Printer State",
-                                   value: printer.connection?.state ?? fallbackValue)
+                                   value: connectionController.connection?.state ?? fallbackValue)
                 
                 Section {
                     ConnectionPageCell(title: "File Name", value: "buddy.gcode")
@@ -70,7 +70,7 @@ struct HomePage_Previews: PreviewProvider {
         RootView(printerStore: printerStore, currentPrinter: printerStore.printers.first!, startingPage: .home)
             .preferredColorScheme(.dark)
             .layoutLandscapeiPad()
-        HomePage(printer: printerStore.printers[0])
+        HomePage(connectionController: printerStore.printers[0].connectionController)
             .previewDevice("iPad (7th generation)")
     }
 }

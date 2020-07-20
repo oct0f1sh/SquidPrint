@@ -8,8 +8,8 @@
 import Foundation
 
 extension URLSession: NetworkSession {
-    func getPublisher(from url: URL) -> DataTaskPublisher {
-        dataTaskPublisher(for: url)
+    func getPublisher(with urlRequest: URLRequest) -> DataTaskPublisher {
+        dataTaskPublisher(for: urlRequest)
     }
     
     func loadData(with urlRequest: URLRequest, _ response: @escaping (Data?, URLResponse?, Error?) -> Void) {
