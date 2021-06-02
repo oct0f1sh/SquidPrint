@@ -63,7 +63,7 @@ struct ConnectionPageCell: View {
         HStack {
             Text(title)
             Spacer()
-            Text(value).fontWeight(.light).foregroundColor(Color(.secondaryLabelColor))
+            Text(value).fontWeight(.light).foregroundColor(Color(.secondaryLabel))
         }
     }
 }
