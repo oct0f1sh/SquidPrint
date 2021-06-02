@@ -27,7 +27,7 @@ struct AddPrinterView: View {
                 Section(footer:
                             HStack {
                                 Spacer()
-                                Button(action: { handler(printerAPIKey, printerURL, printerAPIKey) }, label: {
+                                Button(action: { handler(printerName, printerURL, printerAPIKey) }, label: {
                                     Text("Add printer")
                                 })
                                 .padding()
