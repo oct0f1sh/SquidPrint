@@ -7,7 +7,9 @@
 
 import Foundation
 import SwiftUI
+#if os(iOS)
 import CodeScanner
+#endif
 
 struct AddPrinterView: View {
     @State private var printerName: String = ""
@@ -47,19 +49,24 @@ struct AddPrinterView: View {
                     HStack {
                         Text("API Key: ")
                         TextField("API KEY", text: $printerAPIKey)
+                        #if os(iOS)
                         Button(action: {
                             isPresentingQRScanner = true
                         }, label: {
                             Image(systemName: "qrcode.viewfinder").font(.title)
                         })
+                        #endif
                     }
                 }
             }
         }.sheet(isPresented: $isPresentingQRScanner) {
+            #if os(iOS)
             CodeScannerView(codeTypes: [.qr], completion: handleQRScan(result:))
+            #endif
         }
     }
     
+    #if os(iOS)
     func handleQRScan(result: Result<String, CodeScannerView.ScanError>) {
         isPresentingQRScanner = false
         
@@ -72,6 +79,7 @@ struct AddPrinterView: View {
             printerAPIKey = "error scanning..."
         }
     }
+    #endif
 }
 
 struct AddPrinterView_Previews: PreviewProvider {
